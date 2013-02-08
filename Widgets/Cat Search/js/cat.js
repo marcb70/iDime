@@ -1,5 +1,5 @@
 function Cat(){
-
+//This is a cat object
 	var name = ""; //anything
 	var	color = 0; //white - 0, black - 1, orange - 2 (must be make), calico - 3 (must be female), gray - 4, brown - 5
 	var	breed = 0; //tabby - 0, maine coon - 1, persian - 2, siamese - 3, ragdoll - 4, sphinx - 5 
