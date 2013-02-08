@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="list.css" />
+    <script src = "http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <title>Lets try this</title> 
+</head>
+<body>
+    <div id="widget">
+   <div id="maindiv">
+        <label for="category">Category:</label>
+        <select id="category" class="select">
+            <option value="a" id="a">Breed</option>
+            <option value="b" id="b">Color</option>
+            <option value="c" id="c">Eye Color</option>
+            <option value="d" id="d">Hair Length</option>
+            <option value="e" id="e">Sex</option>
+            <option value="f" id="f">Fixed?</option>
+            <option value="g" id="g">Age</option>
+        </select>
+        <input type="button" value="Add Category" id="addC" />
+    </div> 
+    <div class="box">
+        <div style="position:relative" class="div" id="breedDiv">
+            <div class="clonedInput" style="margin-bottom:4px;" id="input1">
+                <label>Breed:</label>
+                <select class="select" name="BreedList">
+                    <option value="tabby">Tabby</option>
+                    <option value="mc">Maine Coon</option>
+                    <option value="persian">Persian</option>
+                    <option value="siamese">Siamese</option>
+                    <option value="ragdoll">Ragdoll</option>
+                    <option value="sphynx">Sphinx</option>
+                </select>
+            </div>
+            <div>
+                <input type="button" value="Add another breed" id="btnAdd" class="buttonDiv">
+                <input type="button" value="Remove breed" id="btnDel" class="buttonDiv">
+            </div>
+            </br>
+        </div>
+        <div style="position:relative" class="div" id = "colorDiv">
+            <div class="clonedColorInput" style="margin-bottom:4px;" id="color1">
+                    <label> Color:</label>
+                    <select name = "ColorList" class = "Colorselect" >
+                        <option value = "white">White</option>
+                        <option value = "black">Black</option>
+                        <option value = "orange">Orange</option>
+                        <option value = "calico">Calico</option>
+                        <option value = "gray">Gray</option>
+                        <option value = "brown">Brown</option>
+                    </select> 
+                </div>
+                <div>
+                    <input type="button" value="Add another color" id="colorAdd" class="buttonDiv">
+                    <input type="button" value="Remove color" id="colorDel" class="buttonDiv">
+                </div>
+                </br>
+            </div> 
+            <div style="position:relative" class="div" id = "eyeDiv">
+            <div class="clonedEyeInput" style="margin-bottom:4px;" id="eye1">
+                    <label> Eye Color:</label>
+                    <select name = "EyeList" class = "Eyeselect" >
+                        <option value = "green">Green</option>
+                        <option value = "gray">Gray</option>
+                        <option value = "blue">Blue</option>
+                        <option value = "yellow">Yellow</option>
+                    </select> 
+                </div>
+                <div>
+                    <input type="button" value="Add another eye color" id="ecAdd" class="buttonDiv">
+                    <input type="button" value="Remove eye color" id="ecDel" class="buttonDiv">
+                </div>
+                </br>
+            </div>       
+    </div>
+</div>
+
+<!--script src = "http://code.jquery.com/jquery-1.8.2.min.js"-->
+<script>
+    var newNum = 0;
+    $('#addC').click(function() {
+     var val = $('#category').val();
+     if (val == "a") {
+         $('#breedDiv').css('display', 'block');
+         $('#input1').css('display', 'block');
+         $('.clonedInput').css('display', 'block');
+     }
+     else if (val == "b") {
+         $('#colorDiv').css('display', 'block');
+         $('#color1').css('display', 'block');
+         $('.clonedColorInput').css('display', 'block');
+     }
+    else if (val == "c") {
+         $('#eyeDiv').css('display', 'block');
+         $('#eye1').css('display', 'block');
+         $('.clonedEyeInput').css('display', 'block');
+     }
+    });
+ $('#btnAdd').click(function () {
+        var num = $('.clonedInput').length; // how many "duplicatable" input fields we currently have
+        newNum = num + 1; // the numeric ID of the new input field being added
+        var newElem = $('#input' + num).clone().attr('id', 'input' + newNum); // create the new element via clone(), and manipulate it's ID using newNum value
+        console.log("newNum:" + newNum + " num: " + num + " newElem: " + newElem)
+
+        $('.select').each(function (index) {
+            newElem.children('.select').children('option[value="' + $(this).val() + '"]').remove()
+        });
+        $('#input' + num).after(newElem); // insert the new element after the last "duplicatable" input field
+        $('#btnDel').attr('disabled', ''); // enable the "remove" button
+
+
+        if (newNum == 6) {
+            $('#btnAdd').attr('disabled', 'disabled');
+        }
+
+        if (newNum < 1) {
+            $('#btnDel').attr('disabled', '');
+        }
+
+    });
+
+    $('#btnDel').click(function () {
+        var num = $('.clonedInput').length; // how many "duplicatable" input fields we currently have
+        $('#input' + num).remove(); // remove the last element
+        $('#btnAdd').attr('disabled', ''); // enable the "add" button
+
+    });
+    $('#colorAdd').click(function () {
+        var num = $('.clonedColorInput').length; // how many "duplicatable" input fields we currently have
+        newNum = num + 1; // the numeric ID of the new input field being added
+        var newElem = $('#color' + num).clone().attr('id', 'color' + newNum); // create the new element via clone(), and manipulate it's ID using newNum value
+        console.log("newNum:" + newNum + " num: " + num + " newElem: " + newElem)
+
+        $('.Colorselect').each(function (index) {
+            newElem.children('.Colorselect').children('option[value="' + $(this).val() + '"]').remove()
+        });
+        $('#color' + num).after(newElem); // insert the new element after the last "duplicatable" input field
+        $('#colorDel').attr('disabled', ''); // enable the "remove" button
+
+
+        if (newNum == 6) {
+            $('#colorAdd').attr('disabled', 'disabled');
+        }
+
+        if (newNum < 1) {
+            $('#colorDel').attr('disabled', '');
+        }
+
+    });
+
+    $('#colorDel').click(function () {
+        var num = $('.clonedColorInput').length; // how many "duplicatable" input fields we currently have
+        $('#color' + num).remove(); // remove the last element
+        $('#colorAdd').attr('disabled', ''); // enable the "add" button
+
+    });
+    $('#ecAdd').click(function () {
+        var num = $('.clonedEyeInput').length; // how many "duplicatable" input fields we currently have
+        newNum = num + 1; // the numeric ID of the new input field being added
+        var newElem = $('#eye' + num).clone().attr('id', 'eye' + newNum); // create the new element via clone(), and manipulate it's ID using newNum value
+        console.log("newNum:" + newNum + " num: " + num + " newElem: " + newElem)
+
+        $('.Eyeselect').each(function (index) {
+            newElem.children('.Eyeselect').children('option[value="' + $(this).val() + '"]').remove()
+        });
+        $('#eye' + num).after(newElem); // insert the new element after the last "duplicatable" input field
+        $('#ecDel').attr('disabled', ''); // enable the "remove" button
+
+
+        if (newNum == 6) {
+            $('#ecAdd').attr('disabled', 'disabled');
+        }
+
+        if (newNum < 1) {
+            $('#ecDel').attr('disabled', '');
+        }
+
+    });
+
+    $('#ecDel').click(function () {
+        var num = $('.clonedEyeInput').length; // how many "duplicatable" input fields we currently have
+        $('#eye' + num).remove(); // remove the last element
+        $('#ecAdd').attr('disabled', ''); // enable the "add" button
+    });
+</script>
+</body>
+</html>
