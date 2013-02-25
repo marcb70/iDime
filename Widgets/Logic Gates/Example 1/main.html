@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="kinetic-v4.3.3.min.js"></script>
+    <script src="functions.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+  //creates canvas we'll be working with (using 90% dimensions)
+       var stage = new Kinetic.Stage({
+        container: 'container',
+        width: 922,
+        height: 691
+       });
+       var layer = new Kinetic.Layer();
+
+       //generates our logic gates
+       var notImage = new Image();
+       var orImage = new Image();
+       var andImage = new Image();
+
+       //source of images
+      notImage.src = 'images/Not.png';
+      notImage.onload = function() {
+        var NOT = new Kinetic.Image({
+          x: 175,
+          y: 50,
+          image: notImage,
+          width: 106,
+          height: 118
+        });
+      layer.add(NOT);
+      layer.draw();
+      };
+
+      andImage.src = 'images/And.png';
+      andImage.onload = function() {
+        var AND = new Kinetic.Image({
+          x: 400,
+          y: 150,
+          image: andImage,
+          width: 106,
+          height: 118
+        });
+      layer.add(AND);
+      layer.draw();
+      };
+
+
+      var P = new Kinetic.Circle({
+        x: 125,
+        y: 110,
+        radius: 15,
+        fill: '',
+        stroke: 'black',
+        strokeWidth: 2
+      });
+
+      var Q = new Kinetic.Circle({
+        x: 125,
+        y: 275,
+        radius: 15,
+        fill: '',
+        stroke: 'black',
+        strokeWidth: 2
+      });
+
+      var outputIndicator = new Kinetic.Circle({
+        x: 565,
+        y: 210,
+        radius: 15,
+        fill: 'red',
+        stroke: 'black',
+        strokeWidth: 2
+      });
+
+      var PtoNot = new Kinetic.Line({
+        points: [140, 110, 180, 110],
+        stroke: 'black',
+        strokeWidth: 5
+      });
+
+      var QtoAnd = new Kinetic.Line({
+        points: [140, 275, 275, 275, 275, 225, 410, 225],
+        stroke: 'black',
+        strokeWidth: 5
+      });
+
+      var NottoAnd = new Kinetic.Line({
+        points: [275, 110, 350, 110, 350, 200, 410, 200],
+        stroke: 'black',
+        strokeWidth: 5
+      });
+
+      var AndtoOutput = new Kinetic.Line({
+        points: [505, 210, 550, 210],
+        stroke: 'black',
+        strokeWidth: 5
+      });
+
+      layer.add(PtoNot);
+      layer.add(QtoAnd);
+      layer.add(NottoAnd);
+      layer.add(AndtoOutput);
+      layer.add(P);
+      layer.add(Q);
+      layer.add(outputIndicator);
+      stage.add(layer);
+      // add the shape to the layer
+
+      //event handlers
+      P.on("mouseover", function(){
+        document.body.style.cursor = "pointer";
+      });
+      P.on("mouseout", function(){
+        document.body.style.cursor = "default";
+      });
+      P.on("click", function(){
+        setColor(P);
+      });
+
+      Q.on("mouseover", function(){
+        document.body.style.cursor = "pointer";
+      });
+      Q.on("mouseout", function(){
+        document.body.style.cursor = "default";
+      });
+      Q.on("click", function(){
+        setColor(Q);
+      });
+      </script>
+  </body>
+</html>

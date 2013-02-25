@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="kinetic-v4.3.3.min.js"></script>
+    <script src="functions.js"></script>
+    <script src="objects.js"></script>
+    <script src="events.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+  //creates canvas we'll be working with (using 90% dimensions)
+      var stage = new Kinetic.Stage({
+        container: 'container',
+        width: 922,
+        height: 691
+      });
+      var layer = new Kinetic.Layer();
+
+      layer.add(P);
+      layer.add(Q);
+      layer.add(R);
+      layer.add(S);
+      layer.add(StoNot);
+      layer.add(RtoAnd);
+      layer.add(QtoAnd);
+      layer.add(PtoOr);
+      layer.add(AndtoOr);
+      layer.add(NottoOr);
+      layer.add(outputIndicator);
+      stage.add(layer);
+      //event handlers
+
+      </script>
+  </body>
+</html>
