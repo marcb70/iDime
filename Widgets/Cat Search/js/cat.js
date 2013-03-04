@@ -3,13 +3,21 @@ function Cat(){
 	var name = ""; //anything
 	var	color = 0; //white - 0, black - 1, orange - 2 (must be make), calico - 3 (must be female), gray - 4, brown - 5
 	var	breed = 0; //tabby - 0, maine coon - 1, persian - 2, siamese - 3, ragdoll - 4, sphinx - 5 
-	var	isMale = false; //true - male, false -female
+	var	isMale = 0; //true - male, false -female
 	var	markings= 0; // none - 0, stripped - 1, spots - 2
-	var	isFixed = false; // spayed or neutered - true, else false
+	var	isFixed = 0; // spayed or neutered - true, else false
 	var	eyecolor = 0; //green - 0 , gray - 1, blue - 2, yellow -3
 	var	age = 0;
+	var ageRange = 0;
 	var	hairlength = 0;//short - 0, long - 1, none 2
+	var array = new Array()
 
+	/*this.matchSelected = function(selectedList){
+		for(var i = 0; i < selectedList.length; i++){
+			if(selectedList[i]==breed)
+				array
+		}
+	}*/
 
 	this.setName = function(aname) {
 		name = aname;
@@ -20,7 +28,21 @@ function Cat(){
 	};
 
 	this.setColor = function(aColorNum){
-		color = aColorNum;
+		//color = aColorNum;
+		if(aColorNum == 0)
+			color = "white";
+		else if(aColorNum==1)
+			color="black";
+		else if(aColorNum==2)
+			color = "orange";
+		else if(aColorNum==3)
+			color = "calico";
+		else if(aColorNum==4)
+			color="gray";
+		else if(aColorNum==5)
+			color="brown";
+		else
+			color=0;
 	};
 
 	this.getColor = function(){
@@ -28,7 +50,21 @@ function Cat(){
 	};
 
 	this.setBreed = function(aBreed){
-		breed = aBreed;
+		//breed = aBreed;
+		if(aBreed==0)
+			breed="tabby";
+		else if(aBreed==1)
+			breed="maine coon";
+		else if(aBreed==2)
+			breed="persian";
+		else if(aBreed==3)
+			breed="siamese";
+		else if(aBreed==4)
+			breed="ragdoll";
+		else if(aBreed==5)
+			breed="sphinx";
+		else
+			breed=0;
 	};
 
 	this.getBreed = function(){
@@ -36,21 +72,36 @@ function Cat(){
 	};
 
 	this.setMale = function(maleBoolean){
-
-		isMale = maleBoolean;
+		//true - male, false -female
+		if(maleBoolean==false)
+			isMale="female";
+		else
+			isMale="male";
 
 	};
 
-	this.checkIfMale = function(){
+	this.getSex = function(){
 		return isMale;
 	};
 
 	this.setMarkings = function(aMarking){
-		markings = aMarking;
+		// none - 0, striped - 1, spots - 2
+		//markings = aMarking;
+		if(aMarking==0)
+			markings="none";
+		else if(aMarking==1)
+			markings="striped";
+		else if(aMarking==2)
+			markings="spots";
+		else
+			markings=0
 	};
 
 	this.fixCat = function(fixedBoolean){
-		isFixed = fixedBoolean;
+		if(fixedBoolean==false)
+			isFixed="not fixed";
+		else
+			isFixed="fixed";
 	};
 
 	this.checkIfFixed = function(){
@@ -58,7 +109,18 @@ function Cat(){
 	};
 
 	this.setEyeColor = function(anEyeColor){
-		eyecolor = anEyeColor;
+		//green - 0 , gray - 1, blue - 2, yellow -3
+		//eyecolor = anEyeColor;
+		if(anEyeColor==0)
+			eyecolor="green";
+		else if(anEyeColor==1)
+			eyecolor="gray";
+		else if(anEyeColor==2)
+			eyecolor="blue";
+		else if(anEyeColor==3)
+			eyecolor="yellow";
+		else
+			eyecolor=0;
 	};
 
 	this.getEyeColor = function(){
@@ -68,16 +130,38 @@ function Cat(){
 	this.setAge = function(anAge){
 		age = anAge;
 	};
+	
+	this.setAgeRange = function(anAge){
+		if(anAge<2)
+			ageRange = "kitten";
+		else if(anAge >=2 && anAge<7)
+			ageRange ="young adult";
+		else
+			ageRange = "adult";
+	}
 
 	this.getAge = function(){
 		return age;
 	}
-
-	this.setHairlength = function(aHairlength){
-		hairlength = aHairlength;
+	
+	this.getAgeRange = function(){
+		return ageRange;
 	}
 
-	this.getHairlength = function(){
+	this.setHairlength = function(aHairlength){
+		//short - 0, long - 1, none 2
+		//hairlength = aHairlength;
+		if(aHairlength==0)
+			hairlength="short";
+		else if(aHairlength==1)
+			hairlength="long";
+		else if(aHairlength==2)
+			hairlength="none";
+		else
+			hairlength=0;
+	}
+
+	this.getHairLength = function(){
 		return hairlength;
 	}
 
@@ -85,13 +169,22 @@ function Cat(){
 		console.log("Name: " + name + "\n" + 
 			"Breed: " + breed + "\n" +
 			"Color: " + color + "\n" +
-			"IsMale: " + isMale + "\n" +
+			"Sex: " + isMale + "\n" +
 			"Markings: " + markings + "\n" +
-			"isFixed: " + isFixed + "\n" +
+			"Fixed?: " + isFixed + "\n" +
 			"Eyecolor: " + eyecolor + "\n" +
-			"Age: " + age + "\n" +
+			"Age: " + age + "(" + ageRange + ") \n" +
 			"hairlength: " + hairlength + ".");
 	}
+	/*this.getCatArray = function(){
+		array[0]=breed;
+		array[1]=color;
+		array[2]=eyecolor;
+		array[3]=hairlength;
+		array[4]=isMale;
+		array[5]=isFixed;
+		array[6]=ageRange;
+	}*/
 	
 }
 
@@ -119,7 +212,7 @@ function createCatDB(){
 	cats[1].setEyeColor(1);
 	cats[1].setAge(3);
 	cats[1].setHairlength(0);
-	cats[1].setName("Katness");
+	cats[1].setName("Katniss");
 
 	cats[2] = new Cat();
 	cats[2].setColor(2);
@@ -434,5 +527,5 @@ function createCatDB(){
 	this.getDB = function(){
 		return cats;
 	};
-	
+
 }
