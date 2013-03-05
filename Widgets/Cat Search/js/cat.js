@@ -8,7 +8,7 @@ function Cat(){
 	var	isFixed = 0; // spayed or neutered - true, else false
 	var	eyecolor = 0; //green - 0 , gray - 1, blue - 2, yellow -3
 	var	age = 0;
-	var ageRange = 0;
+	var ageRange = "";
 	var	hairlength = 0;//short - 0, long - 1, none 2
 	var array = new Array()
 
@@ -96,7 +96,9 @@ function Cat(){
 		else
 			markings=0
 	};
-
+	this.getMarkings = function(){
+		return markings;
+	}
 	this.fixCat = function(fixedBoolean){
 		if(fixedBoolean==false)
 			isFixed="not fixed";
@@ -131,21 +133,22 @@ function Cat(){
 		age = anAge;
 	};
 	
-	this.setAgeRange = function(anAge){
-		if(anAge<2)
+	this.getAgeRange = function(){
+		
+		if(age<2){
 			ageRange = "kitten";
-		else if(anAge >=2 && anAge<7)
+		}
+		else if(age >=2 && age<7){
 			ageRange ="young adult";
-		else
+		}
+		else{
 			ageRange = "adult";
+		}
+		return ageRange;
 	}
 
 	this.getAge = function(){
 		return age;
-	}
-	
-	this.getAgeRange = function(){
-		return ageRange;
 	}
 
 	this.setHairlength = function(aHairlength){
@@ -176,15 +179,6 @@ function Cat(){
 			"Age: " + age + "(" + ageRange + ") \n" +
 			"hairlength: " + hairlength + ".");
 	}
-	/*this.getCatArray = function(){
-		array[0]=breed;
-		array[1]=color;
-		array[2]=eyecolor;
-		array[3]=hairlength;
-		array[4]=isMale;
-		array[5]=isFixed;
-		array[6]=ageRange;
-	}*/
 	
 }
 
@@ -262,7 +256,7 @@ function createCatDB(){
 	cats[6].setColor(4);
 	cats[6].setBreed(0);
 	cats[6].setMale(false);
-	cats[6].setMarkings(3);
+	cats[6].setMarkings(2);
 	cats[6].fixCat(false);
 	cats[6].setEyeColor(3);
 	cats[6].setAge(8);

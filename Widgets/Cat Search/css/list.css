@@ -2,6 +2,7 @@ html{
 	font-family: 'century gothic', 'futura', 'arial', 'helvetica', 'sans-serif';
 	color: white;
 	height: 100%;
+	font-size: 16px;
 
 }
 .select {
@@ -12,6 +13,7 @@ html{
 	font-size: 12pt;
 	padding: 5px;
 	font-family: 'century gothic', 'futura', 'arial', 'helvetica', 'sans-serif';
+	font-size: 14px;
 	
 }
 .Colorselect {
@@ -22,7 +24,7 @@ html{
 	font-size: 12pt;
 	padding: 5px;
 	font-family: 'century gothic', 'futura', 'arial', 'helvetica', 'sans-serif';
-	
+	font-size: 14px;
 }
 .Eyeselect {
 	
@@ -32,7 +34,7 @@ html{
 	font-size: 12pt;
 	padding: 5px;
 	font-family: 'century gothic', 'futura', 'arial', 'helvetica', 'sans-serif';
-	
+	font-size: 14px;
 }
 .Hairselect {
 	
@@ -42,6 +44,7 @@ html{
 	font-size: 12pt;
 	padding: 5px;
 	font-family: 'century gothic', 'futura', 'arial', 'helvetica', 'sans-serif';
+	font-size: 14px;
 }
 .Sexselect {
 	
@@ -51,6 +54,8 @@ html{
 	font-size: 12pt;
 	padding: 5px;
 	font-family: 'century gothic', 'futura', 'arial', 'helvetica', 'sans-serif';
+	font-size: 14px;
+
 }
 .Fixselect {
 	
@@ -60,6 +65,8 @@ html{
 	font-size: 12pt;
 	padding: 5px;
 	font-family: 'century gothic', 'futura', 'arial', 'helvetica', 'sans-serif';
+	font-size: 14px;
+
 }
 .Ageselect {
 	
@@ -69,10 +76,13 @@ html{
 	font-size: 12pt;
 	padding: 5px;
 	font-family: 'century gothic', 'futura', 'arial', 'helvetica', 'sans-serif';
+	font-size: 14px;
+
 }
 
 .opselect {
-
+	position: relative;
+	left: 100px;
 	background: #00304F!important;
 	border: 2px solid #000000;
 	color: white;
@@ -81,6 +91,7 @@ html{
 	font-family: 'century gothic', 'futura', 'arial', 'helvetica', 'sans-serif';
 	display: none;
 }
+
 label {
 	width: 4em;
 	display: block;
@@ -153,4 +164,22 @@ div.box{
 .buttonDiv
 {
 	z-index: 1000;
+}
+#chosenCatInfowPic{
+	display: none;
+}
+#congratsText{
+	display: none;
+}
+#chooseCat{
+	position: relative;
+	left: 100px;
+}
+#selectTableDiv{
+	display: none;
+}
+.textarea{
+	font-size: 13px;
+	color: #004466;
+
 }

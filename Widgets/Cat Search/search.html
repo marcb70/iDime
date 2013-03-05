@@ -22,7 +22,7 @@
                             <option value="f" id="f">Fixed?</option>
                             <option value="g" id="g">Age</option>
                         </select>
-                        <input type="button" value="Add Category" id="addC" />
+                        <input type="button" class="buttonStyle" value="Add Category" id="addC" />
                     </div> 
                     <br />
                 </td>
@@ -48,10 +48,17 @@
                                 </select>
                             </div>
                             <div>
-                                <input type="button" value="Add another breed" id="btnAdd" class="buttonDiv">
-                                <input type="button" value="Remove breed" id="btnDel" class="buttonDiv" disabled = "disabled">
+                                <input type="button" class="buttonStyle" value="Add another breed" id="btnAdd" class="buttonDiv">
+                                <input type="button" class="buttonStyle" value="Remove breed" id="btnDel" class="buttonDiv" disabled = "disabled">
                             </div>
                             </br>
+                        </div class="div"  id="opselect1"><!--opselects are non-functional at the moment, but eventually they will allow the user to play with logic statements.-->
+                            <select class="opselect">
+                                <option value="and">AND (*)</option>
+                                <option value="or">OR(+)</option>
+                                <option value="implies">IMPLIES (->)</option>
+                            </select>
+                        <div>
                         </div>
                         <div style="position:relative" class="div" id = "colorDiv">
                             <div class="clonedColorInput" style="margin-bottom:4px;" id="color1">
@@ -66,11 +73,18 @@
                                 </select> 
                             </div>
                             <div>
-                                <input type="button" value="Add another color" id="colorAdd" class="buttonDiv">
-                                <input type="button" value="Remove color" id="colorDel" class="buttonDiv">
+                                <input type="button" class="buttonStyle" value="Add another color" id="colorAdd" class="buttonDiv">
+                                <input type="button" class="buttonStyle" value="Remove color" id="colorDel" class="buttonDiv">
                             </div>
                             </br>
                         </div> 
+                        </div class="div"  id="opselect2">
+                            <select class="opselect">
+                                <option value="and">AND (*)</option>
+                                <option value="or">OR(+)</option>
+                                <option value="implies">IMPLIES (->)</option>
+                            </select>
+                        <div>
                         <div style="position:relative" class="div" id = "eyeDiv">
                             <div class="clonedEyeInput" style="margin-bottom:4px;" id="eye1">
                                 <label> Eye Color:</label>
@@ -82,11 +96,18 @@
                                 </select> 
                             </div>
                             <div>
-                                <input type="button" value="Add another eye color" id="ecAdd" class="buttonDiv">
-                                <input type="button" value="Remove eye color" id="ecDel" class="buttonDiv">
+                                <input type="button" class="buttonStyle" value="Add another eye color" id="ecAdd" class="buttonDiv">
+                                <input type="button" class="buttonStyle" value="Remove eye color" id="ecDel" class="buttonDiv">
                             </div>
                             <br />
                         </div> 
+                        </div class="div"  id="opselect3">
+                            <select class="opselect">
+                                <option value="and">AND (*)</option>
+                                <option value="or">OR(+)</option>
+                                <option value="implies">IMPLIES (->)</option>
+                            </select>
+                        <div>
                         <div style="position:relative" class="div" id = "hairDiv">
                             <div class="clonedHairInput" style="margin-bottom:4px;" id="hair1">
                                 <label> Hair Length:</label>
@@ -97,11 +118,18 @@
                                 </select> 
                                 </div>
                             <div>
-                                <input type="button" value="Add a hair length" id="hairAdd" class="buttonDiv">
-                                <input type="button" value="Remove hair length" id="hairDel" class="buttonDiv">
+                                <input type="button" class="buttonStyle" value="Add a hair length" id="hairAdd" class="buttonDiv">
+                                <input type="button" class="buttonStyle" value="Remove hair length" id="hairDel" class="buttonDiv">
                             </div>
                             <br />
                         </div> 
+                        </div class="div"  id="opselect4">
+                            <select class="opselect">
+                                <option value="and">AND (*)</option>
+                                <option value="or">OR(+)</option>
+                                <option value="implies">IMPLIES (->)</option>
+                            </select>
+                        <div>
                         <div style="position:relative" class="div" id = "sexDiv">
                             <div class="clonedSexInput" style="margin-bottom:4px;" id="sex1">
                                 <label> Sex:</label>
@@ -111,11 +139,18 @@
                                 </select> 
                                 </div>
                             <div>
-                                <input type="button" value="Add sex" id="sexAdd" class="buttonDiv">
-                                <input type="button" value="Remove sex" id="sexDel" class="buttonDiv">
+                                <input type="button" class="buttonStyle" value="Add sex" id="sexAdd" class="buttonDiv">
+                                <input type="button" class="buttonStyle" value="Remove sex" id="sexDel" class="buttonDiv">
                             </div>
                             </br>
                         </div>   
+                        </div class="div"  id="opselect5">
+                            <select class="opselect">
+                                <option value="and">AND (*)</option>
+                                <option value="or">OR(+)</option>
+                                <option value="implies">IMPLIES (->)</option>
+                            </select>
+                        <div>
                         <div style="position:relative" class="div" id = "fixDiv">
                             <div class="clonedFixInput" style="margin-bottom:4px;" id="fix1">
                                 <label> Spayed or Neutered?:</label>
@@ -125,11 +160,18 @@
                                 </select> 
                                 </div>
                             <div>
-                                <input type="button" value="Add choice" id="fixAdd" class="buttonDiv">
-                                <input type="button" value="Remove choice" id="fixDel" class="buttonDiv">
+                                <input type="button" class="buttonStyle" value="Add choice" id="fixAdd" class="buttonDiv">
+                                <input type="button" class="buttonStyle" value="Remove choice" id="fixDel" class="buttonDiv">
                             </div>
                             </br>
                         </div> 
+                        </div class="div"  id="opselect6">
+                            <select class="opselect">
+                                <option value="and">AND (*)</option>
+                                <option value="or">OR(+)</option>
+                                <option value="implies">IMPLIES (->)</option>
+                            </select>
+                        <div>
                         <div style="position:relative" class="div" id = "ageDiv">
                             <div class="clonedAgeInput" style="margin-bottom:4px;" id="age1">
                                 <label> Prefered Age:</label>
@@ -140,8 +182,8 @@
                                 </select> 
                                 </div>
                             <div>
-                                <input type="button" value="Add age" id="ageAdd" class="buttonDiv">
-                                <input type="button" value="Remove age" id="ageDel" class="buttonDiv">
+                                <input type="button" class="buttonStyle" value="Add age" id="ageAdd" class="buttonDiv">
+                                <input type="button" class="buttonStyle" value="Remove age" id="ageDel" class="buttonDiv">
                             </div>
                             <br />
                         </div>      
@@ -150,27 +192,46 @@
                 </td>
                 <td>
                     <!--this div is for the select list and printed information for each cat-->
-                    <div>
+                    <div id="selectTableDiv">
                         <table>
                             <tr>
                                 <td>
-                                    <select id = "catList" multiple="yes">
+                                    <select id = "catList">
                                         <option>Select a Cat</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <textarea id="catListInfo"></textarea>
+                                    <textarea readonly id="catListInfo" rows="5" cols="20" class="textarea"></textarea>
+                                </td>
+                            </tr>
+                            <tr >
+                                <td colspan="2">
+                                    <input type = "button" class="buttonStyle" value = "I choose you" id = "chooseCat">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <a id="congratsText">Congratulations! You've found your perfect cat:</a>
+                                </td>
+                            </tr>
+                            <tr >
+                                <td colspan="2">
+                                    <div id="chosenCatInfowPic">
+                                        <img src="catPic.gif" height = "170px">
+                                        <textarea rows="10" cols="20" id = "chosenCatInfo" class="textarea"></textarea>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
-                        
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input type = "button" value = "Find My Cat" id = "submit">
+                    <input type = "button" class="buttonStyle" value = "Find My Cat" id = "submit">
                 </td>
+                <td> 
+                </td>                      
             </tr>
         </table>
 </div>
@@ -190,21 +251,39 @@
         }
         return false;
     }
-
+    //populates text list by fiding value of catList and matching it to the cat database
     $('#catList').change(function() {
         var db= new createCatDB();
         var catArray=db.getDB();
-        var mycats= $('#catList').val();
+        var mycats= $('#catList').find(":selected").text();
         var temp = '';
         console.log("mycats: " + mycats);
         for(var i=0; i<catArray.length;i++){
             if(mycats==catArray[i].getName()){
-                temp=catArray[i];
+                temp= "Name: " + catArray[i].getName() + "\n" + 
+            "Breed: " + catArray[i].getBreed() + "\n" +
+            "Color: " + catArray[i].getColor() + "\n" +
+            "Sex: " + catArray[i].getSex() + "\n" +
+            "Markings: " + catArray[i].getMarkings() + "\n" +
+            "Fixed?: " + catArray[i].checkIfFixed() + "\n" +
+            "Eyecolor: " + catArray[i].getEyeColor() + "\n" +
+            "Age: " + catArray[i].getAge() + "(" + catArray[i].getAgeRange() + ") \n" +
+            "hairlength: " + catArray[i].getHairLength();
                 $('#catListInfo').val(temp);
             }
         }
 
     });
+    
+    $('#chooseCat').click(function(){
+        if($('#catListInfo').val()!=0)
+        {
+            $('#chosenCatInfo').val($('#catListInfo').val());
+            $('#chosenCatInfowPic').css('display', 'block');
+            $('#congratsText').css('display', 'block');
+        }
+    });
+
     $('#submit').click(function() {
         var catDb = new createCatDB();
         catArray = catDb.getDB();
@@ -248,6 +327,9 @@
                 
                     
             }
+            $('#selectTableDiv').css('display', 'block');
+            $('#chosenCatInfowPic').css('display', 'none');//not working.
+
         }
        // console.log(selectedCatList);
         for (k=0;k<selectedCatList.length;k++){
@@ -373,8 +455,6 @@
         if (newNum == 2) {
             $('#colorDel').attr('disabled', true);
         }
-        else
-            $('#colorDel').attr('disabled', true);
 
     });
     $('#ecAdd').click(function () {
@@ -437,16 +517,23 @@
             $('#hairAdd').attr('disabled', true);
         }
 
-        if (newNum > 1) {
+        if (newNum >= 2) {
             $('#hairDel').attr('disabled', false);
         }
+        else
+            $('#hairDel').attr('disabled', true);
 
     });
 
     $('#hairDel').click(function () {
         var num = $('.clonedHairInput').length; // how many "duplicatable" input fields we currently have
+        newNum=num+1;
         $('#hair' + num).remove(); // remove the last element
         $('#hairAdd').attr('disabled', false); // enable the "add" button
+        newNum--;
+        if (newNum == 2) {
+            $('#hairDel').attr('disabled', true);
+        }
     });
     $('#sexAdd').click(function () {
         var num = $('.clonedSexInput').length; // how many "duplicatable" input fields we currently have
@@ -469,16 +556,23 @@
             $('#sexAdd').attr('disabled', true);
         }
 
-        if (newNum > 1) {
+        if (newNum >= 2) {
             $('#sexDel').attr('disabled', false);
         }
+        else
+            $('#sexDel').attr('disabled', true);
 
     });
 
     $('#sexDel').click(function () {
         var num = $('.clonedSexInput').length; // how many "duplicatable" input fields we currently have
+        newNum=num+1;
         $('#sex' + num).remove(); // remove the last element
         $('#sexAdd').attr('disabled', false); // enable the "add" button
+        newNum--;
+        if (newNum == 2) {
+            $('#sexDel').attr('disabled', true);
+        }
     });
     $('#fixAdd').click(function () {
         var num = $('.clonedFixInput').length; // how many "duplicatable" input fields we currently have
@@ -496,16 +590,23 @@
             $('#fixAdd').attr('disabled', true);
         }
 
-        if (newNum > 1) {
+        if (newNum >= 2) {
             $('#fixDel').attr('disabled', false);
         }
+        else
+            $('#fixDel').attr('disabled', true);
 
     });
 
     $('#fixDel').click(function () {
         var num = $('.clonedFixInput').length; // how many "duplicatable" input fields we currently have
+        newNum=num+1;
         $('#fix' + num).remove(); // remove the last element
         $('#fixAdd').attr('disabled', false); // enable the "add" button
+        newNum--;
+        if (newNum == 2) {
+            $('#fixDel').attr('disabled', true);
+        }
     });
     $('#ageAdd').click(function () {
         var num = $('.clonedAgeInput').length; // how many "duplicatable" input fields we currently have
@@ -524,16 +625,23 @@
             $('#ageAdd').attr('disabled', true);
         }
 
-        if (newNum > 1) {
+        if (newNum >=2) {
             $('#ageDel').attr('disabled', false);
         }
+        else
+            $('#ageDel').attr('disabled', true);
 
     });
 
     $('#ageDel').click(function () {
         var num = $('.clonedAgeInput').length; // how many "duplicatable" input fields we currently have
+        newNum=num+1
         $('#age' + num).remove(); // remove the last element
         $('#ageAdd').attr('disabled', false); // enable the "add" button
+        newNum--;
+        if (newNum == 2) {
+            $('#ageDel').attr('disabled', true);
+        }
     });
 
 </script>
