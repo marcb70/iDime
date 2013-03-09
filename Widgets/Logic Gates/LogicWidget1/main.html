@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="http://www.html5canvastutorials.com/libraries/kinetic-v4.3.0-beta2.js"></script>
+    <script src="functions.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <button id="reset" onclick="reset()">Reset</button>
+    <button id="evaluate" onclick="doit()">Evaluate</button>
+    <select id = "operation" class = "select">
+      <option value = "a">AND</option>
+      <option value = "b">OR</option>
+      <option value = "c">IMPLIES</option>
+    </select>
+    <script>
+    //creates canvas we'll be working with (using 90% dimensions)
+    var stage = new Kinetic.Stage({
+      container: 'container',
+      width: 922,
+      height: 691
+    });
+
+    var layer = new Kinetic.Layer();
+
+    //default X/Y coords for the True/False buttons (based off of stage size)
+    falseX = (stage.getWidth() / 2) + 100;
+    falseY = (stage.getHeight() / 2) + 50;
+    trueX = (stage.getWidth() / 2) - 100;
+    trueY = (stage.getHeight() / 2) + 50;
+
+    //various elements, T/F butttons dropzones, etc
+    var falseB = new Kinetic.Circle({
+      x: falseX,
+      y: falseY,
+      radius: 20,
+      fill: 'red',
+      stroke: 'black',
+      strokeWidth: 4,
+      draggable: true
+    });
+
+    var trueB = new Kinetic.Circle({
+      x: trueX,
+      y: trueY,
+      radius: 20,
+      fill: 'green',
+      stroke: 'black',
+      strokeWidth: 4,
+      draggable: true
+    });
+
+    var leftDrop = new Kinetic.Circle({
+      x: 200,
+      y: 200,
+      radius: 25,
+      stroke: 'black',
+      strokeWidth: 4
+    });
+
+    var rightDrop = new Kinetic.Circle({
+      x: 400,
+      y: 200,
+      radius: 25,
+      stroke: 'black',
+      strokeWidth: 4
+    });
+
+    var evalCircle = new Kinetic.Circle({
+      x: 600,
+      y: 200,
+      radius: 25,
+      stroke: 'black',
+      strokeWidth: 4
+    });
+
+    // add the shape to the layer
+    layer.add(falseB);
+    layer.add(trueB);
+    layer.add(leftDrop);
+    layer.add(rightDrop);
+    layer.add(evalCircle);
+    stage.add(layer);
+
+    //event handlers
+    trueB.on("mouseover", function () {
+      document.body.style.cursor = "pointer";
+    });
+
+    trueB.on("mouseout", function () {
+      document.body.style.cursor = "default";
+    });
+
+    trueB.on("dragend", function(){
+      checkDrop(trueB);
+    });
+
+    falseB.on("mouseover", function () {
+      document.body.style.cursor = "pointer";
+    });
+
+    falseB.on("mouseout", function () {
+      document.body.style.cursor = "default";
+    });
+
+    falseB.on("dragend", function(){
+      checkDrop(falseB);
+    });
+
+    </script>
+  </body>
+</html>
