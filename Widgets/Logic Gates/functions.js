@@ -1,74 +1,168 @@
-function setColor(object)
+var leftV
+var rightV;
+
+
+//resets dropzones and T/F buttons
+function reset()
 {
+	leftDrop.setFill("");
+	rightDrop.setFill("");
+	evalCircle.setFill("");
+
+	resetXY();
+	layer.draw();
+}
+
+//resets pos of T/F buttons to original location
+function resetXY()
+{
+	trueB.setPosition(trueX, trueY);
+	falseB.setPosition(falseX, falseY);
+	layer.draw();
+} 
+
+function getOperation()
+{
+	var index = document.getElementById("operation").selectedIndex;
+	return index;
+}
+
+//logic
+function doit()
+{
+	updateRightandLeft();
+	var color;
+	operation = getOperation();
+	//AND logic
+	if(operation == 0)
+	{
+		if(leftV == 1 && rightV == 1)
+		{
+			color = "green";
+		}
+		if(leftV == 1 && rightV == 0)
+		{
+			color = "red";
+		}
+		if(leftV == 0 && rightV == 0)
+		{
+			color = "red";
+		}
+		if(leftV == 0 && rightV == 1)
+		{
+			color = "red";
+		}
+	}
+	//OR logic
+	if(operation == 1)
+	{
+		if(leftV == 1 && rightV == 1)
+		{
+			color = "green";
+		}
+		if(leftV == 1 && rightV == 0)
+		{
+			color = "green";
+		}
+		if(leftV == 0 && rightV == 0)
+		{
+			color = "red";
+		}
+		if(leftV == 0 && rightV == 1)
+		{
+			color = "green";
+		}
+	}
+	//Implies logic
+	if(operation == 2)
+	{
+		if(leftV == 1 && rightV == 1)
+		{
+			color = "green";
+		}
+		if(leftV == 1 && rightV == 0)
+		{
+			color = "red";
+		}
+		if(leftV == 0 && rightV == 0)
+		{
+			color = "green";
+		}
+		if(leftV == 0 && rightV == 1)
+		{
+			color = "green";
+		}
+	}
+	//sets answer area to red/green
+	evalCircle.setFill(color);
+	layer.draw();
+}
+
+//checks if drop location is within bounds of a dropzone. if so, passes event on to drop handler
+function checkDrop(object)
+{
+	var mousePos = stage.getMousePosition();
+
+	if((mousePos.x >= 175 && mousePos.x <= 225) && (mousePos.y >= 175 && mousePos.y <= 225))
+	{
+		doDrop(object, leftDrop);
+	}
+
+	else if((mousePos.x >= 375 && mousePos.x <= 425) && (mousePos.y >= 175 && mousePos.y <= 225))
+	{
+		doDrop(object, rightDrop);
+	}
+
+	else
+	{
+		resetXY(object);	
+	}
+}
+
+//handles dropping T/F buttons onto dropzones
+function doDrop(object, dropZone)
+{
+	var x = dropZone.getPosition().x;
+	var y = dropZone.getPosition().y;
 	var color = object.getFill();
-	switch(color)
+	dropZone.setFill(color);
+	if(color == "green")
 	{
-		case "":
-		color = "green";
-		break;
-		case "green":
-		color = "red";
-		break;
-		case "red":
-		color = "green";
-		break;
+		if(x == leftDrop.x)
+		{
+			alert("Hi");
+		}
+		if(x == rightDrop.x)
+		{
+			alert("right");
+		}
 	}
-	object.setFill(color);
-	layer.draw();
-	updateIndicators();
-	updateOutput();
-}
 
-function updateIndicators()
-{
-	var pColor = P.getFill();
-	var qColor = Q.getFill();
-
-	if(pColor == "green")
-	{
-		PtoNot.setStroke("green");
-		NottoAnd.setStroke("red");
-	}
-	if(pColor == "red")
-	{
-		PtoNot.setStroke("red");
-		NottoAnd.setStroke("green");
-	}
-	if(qColor == "green")
-	{
-		QtoAnd.setStroke("green");
-	}
-	if(qColor == "red")
-	{
-		QtoAnd.setStroke("red");
-	}
+	resetXY();
 	layer.draw();
 }
 
-function updateOutput()
+//updates the global left and right variables with true or false
+function updateRightandLeft()
 {
-	var pColor = P.getFill();
-	var qColor = Q.getFill();
-
-	if(pColor == "green" && qColor == "green")
+	var leftColor;
+	var rightColor;
+	leftColor = leftDrop.getFill();
+	rightColor = rightDrop.getFill();
+	if(leftColor == 'red')
 	{
-		AndtoOutput.setStroke("red");
-		outputIndicator.setFill("red");
+		leftV = 0;
 	}
-	else if(pColor == "green" && qColor == "red")
+	if(leftColor == 'green')
 	{
-		AndtoOutput.setStroke("red");
-		outputIndicator.setFill("red");
+		leftV = 1;
 	}
-	else if(pColor == "red" && qColor == "green")
+	if(rightColor == 'red')
 	{
-		AndtoOutput.setStroke("green");
-		outputIndicator.setFill("green");
+		rightV = 0;
 	}
-	else if(pColor == "red" && qColor == "red")
+	if(rightColor == 'green')
 	{
-		AndtoOutput.setStroke("red");
-		outputIndicator.setFill("red");
+		rightV = 1;
 	}
-	layer.draw();
 }
