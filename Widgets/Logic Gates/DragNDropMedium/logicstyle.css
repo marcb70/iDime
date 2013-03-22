@@ -1,0 +1,36 @@
+html{
+	font-family: 'century gothic', 'futura', 'arial', 'helvetica', 'sans-serif';
+	color: black;
+	height: 100%;
+
+}
+#divHeader{
+	-moz-box-shadow: 0 0 30px 5px #999;
+	-webkit-box-shadow: 0 0 30px 5px #999;
+	border-radius: 15px;
+	width: 800px;
+	position: relative;
+	left: 50px;
+}
+.heading{
+	font-size: 20px;
+	position:relative;
+	left: 20px;
+}
+.statement{
+	color: red;
+	font-style: italic;
+	font-style: oblique;
+	position: relative;
+	left: 300px;
+	padding: 10px;
+	-moz-box-shadow: 0 0 10px 5px #004466;
+	-webkit-box-shadow: 0 0 10px 5px #004466;
+	width: 110px;
+}
+#buttonDiv{
+	float: right;
+	position: relative;
+	bottom: 500px;
+	right: 600px;
+}
