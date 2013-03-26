@@ -3,7 +3,6 @@ html{
 	color: white;
 	height: 100%;
 	font-size: 16px;
-
 }
 
 img
@@ -16,7 +15,6 @@ img
 	
 	background: #77AA00!important;
 	border: 2px solid #000000;
-	color: black;h
 	color: black;
 	font-size: 12pt;
 	padding: 5px;
@@ -227,6 +225,7 @@ div.box{
 	color: #004466;
 
 }
+<<<<<<< HEAD
 
 #breedDiv
 {
@@ -303,7 +302,6 @@ div.box{
 	float: left;
 	height: 33%;
 	width: 25%;
-}}
 }
 =======
 >>>>>>> e86f8c7a551db7b040e5e8489b334923f8f7b0c9
