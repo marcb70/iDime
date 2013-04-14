@@ -3,18 +3,20 @@ function Cat(){
 	var name = ""; //anything
 	var	color = 0; //white - 0, black - 1, orange - 2 (must be make), calico - 3 (must be female), gray - 4, brown - 5
 	var	breed = 0; //tabby - 0, maine coon - 1, persian - 2, siamese - 3, ragdoll - 4, sphinx - 5 
-	var	isMale = 0; //true - male, false -female
+	var	isMale = ""; //true - male, false -female
 	var	markings= 0; // none - 0, stripped - 1, spots - 2
-	var	isFixed = 0; // spayed or neutered - true, else false
+	var	isFixed = ""; // spayed or neutered - true, else false
 	var	eyecolor = 0; //green - 0 , gray - 1, blue - 2, yellow -3
 	var	age = 0;
 	var ageRange = "";
 	var	hairlength = 0;//short - 0, long - 1, none 2
+	var match = false;
+	var img = "catPic.gif";
 	var array = new Array()
 
-	/*this.matchSelected = function(selectedList){
-		for(var i = 0; i < selectedList.length; i++){
-			if(selectedList[i]==breed)
+	/*this.matchMatch = function(matchList){
+		for(var i = 0; i < matchList.length; i++){
+			if(matchList[i]==breed)
 				array
 		}
 	}*/
@@ -90,7 +92,7 @@ function Cat(){
 		if(aMarking==0)
 			markings="none";
 		else if(aMarking==1)
-			markings="striped";
+			markings="stripes";
 		else if(aMarking==2)
 			markings="spots";
 		else
@@ -130,7 +132,13 @@ function Cat(){
 	};
 
 	this.setAge = function(anAge){
-		age = anAge;
+		 if(anAge <= 2){
+		 	age = "kitten"
+		 }else if(anAge <=7){
+		 	age = "young adult"
+		 }else{
+		 	age = "adult"
+		 }
 	};
 	
 	this.getAgeRange = function(){
@@ -168,7 +176,43 @@ function Cat(){
 		return hairlength;
 	}
 
+	this.isMatch = function(tF){
+		match = tF;
+	}
+
+	this.getMatch = function(){
+		return match;
+	}
+
+	this.setImg = function(anImgUrl){
+		img = anImgUrl;
+	}
+
+	this.getImg = function(){
+		return img;
+	}
+
+	this.catJson = function (){
+		var x = 
+		{
+			name : name,
+			breed : breed,
+			color : color,
+			markings : markings,
+			sex: isMale,
+			fixed : isFixed,
+			eyecolor : eyecolor,
+			age : age,
+			hairlength: hairlength,
+			match: match,
+			img: img,
+
+		}
+		return x
+	}
+
 	this.printCat = function(){
+		/*
 		console.log("Name: " + name + "\n" + 
 			"Breed: " + breed + "\n" +
 			"Color: " + color + "\n" +
@@ -178,13 +222,37 @@ function Cat(){
 			"Eyecolor: " + eyecolor + "\n" +
 			"Age: " + age + "(" + ageRange + ") \n" +
 			"hairlength: " + hairlength + ".");
+		*/ 
+		console.log(this.catJson());	
 	}
+
+	this.displayCatThumb = function(){
+		var html = "<div id='" + name + "Thumb' class='catThumb'><img src='" + img + "'></img>"+name+"</div>"
+		return html;
+	}
+
+	this.displayCat = function(){
+		var aCat = this.catJson();
+		var html = "<div id='" + aCat.name + "Display' class='catDisplay'><img src='" + aCat.img + "'></img>Name: "+aCat.name+" <br/>Breed: " +aCat.breed+"<br/>Color: "+aCat.color+"<br/>Sex: "+aCat.isMale+"<br/>Fixed: "+aCat.isFixed+"<br/>Eyecolor: "+aCat.eyecolor+"<br/>Age:"+aCat.age+"<br/>Markings: " + aCat.markings+"</div>";
+		//var html = "<div id='" + name + "Display' class='catDisplay'><img src='" + img + "'></img>Name: "+name+" <br/>Breed: " +breed+"<br/>Color: "+color+"<br/>Sex: "+isMale+"<br/>Fixed: "+isFixed+"<br/>Eyecolor: "+eyecolor+"<br/>Age:"+age+"<br/>Hairlength: " + hairlength+"</div>"
+		//$("rightTop").html(html);
+		return html;
+	}
+
+	this.displayClickedCat = function(aCat){
+		var html = "<div id='" + aCat.name + "Display' class='catDisplay'><img src='" + aCat.img + "'></img>Name: "+aCat.name+" <br/>Breed: " +aCat.breed+"<br/>Color: "+aCat.color+"<br/>Sex: "+aCat.isMale+"<br/>Fixed: "+aCat.isFixed+"<br/>Eyecolor: "+aCat.eyecolor+"<br/>Age:"+aCat.age+"<br/>Hairlength: " + aCat.hairlength+"</div>";
+		$("rightTop").html(html);
+		return html;
+	}
+
+
 	
 }
 
 function createCatDB(){
 	var size = 30;
 	var cats = new Array(30);
+	var JSONcats = new Array(30);
 
 	cats[0] = new Cat();
 	cats[0].setColor(2);
@@ -518,8 +586,16 @@ function createCatDB(){
 	cats[29].setHairlength(1);
 	cats[29].setName("Grey Wind");
 
+	for (var i = 0; i < cats.length; i++) {
+		JSONcats[i] = cats[i].catJson();
+	};
+
 	this.getDB = function(){
 		return cats;
 	};
+
+	this.getDbAsJson = function(){
+		return JSONcats;
+	}
 
 }
