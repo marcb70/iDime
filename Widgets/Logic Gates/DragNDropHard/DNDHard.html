@@ -1,0 +1,731 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="logicstyle.css">
+    <script src="kinetic-v4.3.3.min.js"></script>
+    <title>Drag-n-drop Medium Example</title>
+  </head>
+  <body>
+    <div id="container">
+    </div>
+    <div id = "buttonDiv">
+      <button id = "check" class = "buttons" onClick="checkGates();">Check it!</button> 
+      <br />
+      <button id = "help" class = "buttons" onClick = "helpInfo()">Help!</button>
+       <br />
+      <button id = "clear" class = "buttons" onClick = "clear()">Clear!</button>
+    </div>
+    <script>
+      var stage = new Kinetic.Stage({
+        container: 'container',
+        width: 1000,
+        height: 691
+      });
+      var layer = new Kinetic.Layer();
+    
+    function loadImages(sources, callback) {
+        var images = {};
+        var loadedImages = 0;
+        var numImages = 0;
+        // get num of sources
+        for(var src in sources) {
+          numImages++;
+        }
+        for(var src in sources) {
+          images[src] = new Image();
+          images[src].onload = function() {
+            if(++loadedImages >= numImages) {
+              callback(images);
+            }
+          };
+          images[src].src = sources[src];
+        }
+      }
+        
+      function draw(images){
+       
+        var guideText = new Kinetic.Text({
+          x: 90,
+          y: 0,
+          text: 'Drag and drop the logic gates into the correct\nboxes to match this statement: ',
+          fontSize: 25,
+          fontFamily: 'Calibri',
+          fill: 'black',
+          padding: 20
+        });
+
+        var statementText = new Kinetic.Text({
+          x: 120,
+          y: 70,
+          text: '{P + [(P * Q) * ~(Q + R)]} + {S + [~(Q + R) + (R * S)]}',
+          fontSize: 18,
+          fontFamily: 'Calibri',
+          fill: 'black',
+          padding: 10
+        });
+
+        var textbox = new Kinetic.Rect({
+          x: 90,
+          y: 0,
+          stroke: '#555',
+          strokeWidth: 5,
+          fill: '#ddd',
+          width: 500,
+          height: statementText.getHeight()+guideText.getHeight(),
+          shadowColor: 'black',
+          shadowBlur: 10,
+          shadowOffset: [10, 10],
+          shadowOpacity: 0.2,
+          cornerRadius: 10
+        });
+
+       var andBox = new Kinetic.Rect({
+          x: 600,
+          y: 0,
+          fillPatternImage: images.andImage,
+          fillPatternRepeat: 'no-repeat',
+          width: 90,
+          height: 90,
+          draggable: true,
+        });
+
+        var notBox = new Kinetic.Rect({
+          x: 700,
+          y: 0,
+          fillPatternImage: images.notImage,
+          fillPatternRepeat:'no-repeat',
+          width: 90,
+          height: 90,
+          draggable: true,
+        });
+
+        var orBox = new Kinetic.Rect({
+          x: 790,
+          y: 0,
+          fillPatternImage: images.orImage,
+          fillPatternRepeat:'no-repeat',
+          width: 90,
+          height: 90,
+          draggable: true,
+        });
+       
+        var P = new Kinetic.Circle({
+          x: 50,
+          y: 160,
+          radius: 15,
+          fill: '',
+          stroke: 'black',
+          strokeWidth: 2,
+          text: 'P',
+          fontSize: 20,
+          fontFamily: 'Calibri',
+          textFill: 'black'
+        });
+
+        var Q = new Kinetic.Circle({
+          x: 50,
+          y: 310,
+          radius: 15,
+          fill: '',
+          stroke: 'black',
+          strokeWidth: 2,
+          text: 'Q',
+          fontSize: 20,
+          fontFamily: 'Calibri',
+          textFill: 'black'
+
+        });
+
+        var R = new Kinetic.Circle({
+          x: 50,
+          y: 455,
+          radius: 15,
+          fill: '',
+          stroke: 'black',
+          strokeWidth: 2,
+          text: 'P',
+          fontSize: 20,
+          fontFamily: 'Calibri',
+          textFill: 'black'
+        });
+
+        var S = new Kinetic.Circle({
+          x: 50,
+          y: 590,
+          radius: 15,
+          fill: '',
+          stroke: 'black',
+          strokeWidth: 2,
+          text: 'Q',
+          fontSize: 20,
+          fontFamily: 'Calibri',
+          textFill: 'black'
+        });
+
+        var ptext=new Kinetic.Text({
+          x: 44,
+          y: 152,
+          text: 'P',
+          fontSize: 20,
+          fontFamily: 'Calibri',
+          fill: 'black'
+        });
+        var qtext = new Kinetic.Text({
+          x: 43,
+          y: 300,
+          text: 'Q',
+          fontSize: 20,
+          fontFamily: 'Calibri',
+          fill: 'black'
+        });
+        var rtext=new Kinetic.Text({
+          x: 44,
+          y: 448,
+          text: 'R',
+          fontSize: 20,
+          fontFamily: 'Calibri',
+          fill: 'black'
+        });
+        var stext = new Kinetic.Text({
+          x: 43,
+          y: 580,
+          text: 'S',
+          fontSize: 20,
+          fontFamily: 'Calibri',
+          fill: 'black'
+        });
+
+        var drop1 = new Kinetic.Rect({
+          x: 190,
+          y: 190,
+          width: 90,
+          height: 90,
+          fill: '',
+          stroke: 'black',
+          strokeWidth: 2
+        });
+
+        var drop2 = new Kinetic.Rect({
+          x: 190,
+          y: 330,
+          width: 90,
+          height: 90,
+          fill: '',
+          stroke: 'black',
+          strokeWidth: 2
+        });
+        var drop3 = new Kinetic.Rect({
+          x: 190,
+          y: 480,
+          width: 90,
+          height: 90,
+          fill: '',
+          stroke: 'black',
+          strokeWidth: 2
+        });
+        
+        
+
+        var drop4 = new Kinetic.Rect({
+          x: 330,
+          y: 330,
+          width: 90,
+          height: 90,
+          fill: '',
+          stroke: 'black',
+          strokeWidth: 2
+        });
+
+        var drop5 = new Kinetic.Rect({
+          x: 500,
+          y: 270,
+          width: 90,
+          height: 90,
+          fill: '',
+          stroke: 'black',
+          strokeWidth: 2
+        });
+        var drop6 = new Kinetic.Rect({
+          x: 500,
+          y: 420,
+          width: 90,
+          height: 90,
+          fill: '',
+          stroke: 'black',
+          strokeWidth: 2
+        });
+        var drop7 = new Kinetic.Rect({
+          x: 670,
+          y: 140,
+          width: 90,
+          height: 90,
+          fill: '',
+          stroke: 'black',
+          strokeWidth: 2
+        });
+
+        var drop8 = new Kinetic.Rect({
+          x: 670,
+          y: 530,
+          width: 90,
+          height: 90,
+          fill: '',
+          stroke: 'black',
+          strokeWidth: 2
+        });
+        var drop9 = new Kinetic.Rect({
+          x: 850,
+          y: 330,
+          width: 90,
+          height: 90,
+          fill: '',
+          stroke: 'black',
+          strokeWidth: 2
+        });
+
+        var StoDrop8 = new Kinetic.Line({
+          points: [64, 590, 670, 590],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+
+        var PtoDrop6 = new Kinetic.Line({
+          points: [64, 160, 670, 160],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+
+
+        var drop2todrop4=new Kinetic.Line({
+          points: [280, 380, 330, 380],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+
+        var PtoA = new Kinetic.Line({
+          points: [120, 160, 120, 220],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+
+        var QtoA = new Kinetic.Line({
+          points: [64, 310, 120, 310],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+
+        var RtoA = new Kinetic.Line({
+          points: [64, 455, 120, 455],
+          stroke: 'black',
+          strokeWidth: 5          
+        });
+
+        var StoA = new Kinetic.Line({
+          points: [120, 590, 120, 550],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+
+        var QA = new Kinetic.Line({
+          points: [120, 360, 120, 260],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+
+        var RA = new Kinetic.Line({
+          points: [120, 510, 120, 400],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+
+        var AtoDrop1 = new Kinetic.Line({
+          points: [120, 220, 190, 220],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+
+        var QAtoDrop1 = new Kinetic.Line({
+          points: [120, 260, 190, 260],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+        var QAtoDrop2 = new Kinetic.Line({
+          points: [120, 360, 190, 360],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+
+        var RAtodrop2 = new Kinetic.Line({
+          points: [120, 400, 190, 400],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+
+        var RAtoDrop3 = new Kinetic.Line({
+          points: [120, 510, 190, 510],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+
+        var SAtoDrop3 = new Kinetic.Line({
+          points: [120, 550, 190, 550],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+        
+        var drop1toDrop5A = new Kinetic.Line({
+          points: [280, 235, 460, 235],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+        var drop1toDrop5B = new Kinetic.Line({
+          points: [460, 295, 460, 235],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+
+        var drop1toDrop5C = new Kinetic.Line({
+          points: [460, 295, 500, 295],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+        var drop4toB = new Kinetic.Line({
+          points: [420, 375, 460, 375],
+          stroke: 'black',
+          strokeWidth: 5
+        });    
+        var drop5toDrop7A = new Kinetic.Line({
+          points: [460, 295, 500, 295],
+          stroke: 'black',
+          strokeWidth: 5
+        });    
+        var drop5B = new Kinetic.Line({
+          points: [460, 325, 460, 435],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+
+        var BtoDrop6 = new Kinetic.Line({
+          points: [460, 325, 500, 325], 
+          stroke: 'black',
+          strokeWidth: '5'
+        });
+        var BtoDrop7 = new Kinetic.Line({
+          points: [460, 435, 500, 435], 
+          stroke: 'black',
+          strokeWidth: '5'
+        });
+        var drop5toDrop7C = new Kinetic.Line({
+          points: [630, 195, 670, 195],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+        var drop6toC = new Kinetic.Line({
+          points: [590, 325, 630, 325],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+        var drop5toDrop7B = new Kinetic.Line({
+          points: [630, 325, 630, 195],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+       var Drop3toDrop6A = new Kinetic.Line({
+          points: [280, 530, 460, 530], 
+          stroke: 'black',
+          strokeWidth: '5'
+        }); 
+        var Drop3toDrop6B = new Kinetic.Line({
+          points: [460, 530, 460, 490], 
+          stroke: 'black',
+          strokeWidth: '5'
+        }); 
+        var Drop3toDrop6C = new Kinetic.Line({
+          points: [460, 490, 500, 490], 
+          stroke: 'black',
+          strokeWidth: '5'
+        });        
+        var drop6todrop8A = new Kinetic.Line({
+          points: [590, 470, 630, 470],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+         var drop6todrop8B = new Kinetic.Line({
+          points: [630, 560, 630, 470],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+        var drop6todrop8C = new Kinetic.Line({
+          points: [630, 560, 670, 560],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+
+        var drop7todrop9A = new Kinetic.Line({
+          points: [760, 190, 805, 190],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+        var drop7todrop9B = new Kinetic.Line({
+          points: [805, 190, 805, 360],
+          stroke: 'black',
+          strokeWidth: 5
+        }); 
+        var drop7todrop9C = new Kinetic.Line({
+          points: [805, 360, 850, 360],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+        var drop8todrop9A = new Kinetic.Line({
+          points: [760, 575, 805, 575],
+          stroke: 'black',
+          strokeWidth: 5
+        }); 
+        var drop8todrop9B = new Kinetic.Line({
+          points: [805, 575, 805, 390],
+          stroke: 'black',
+          strokeWidth: 5
+        });
+        var drop8todrop9C = new Kinetic.Line({
+          points: [805, 390, 850, 390],
+          stroke: 'black',
+          strokeWidth: 5
+        }); 
+        var end = new Kinetic.Circle({
+          x: 710,
+          y: 330,
+          radius: 15,
+          fill: 'black',
+          stroke: 'black',
+          strokeWidth: 2,
+        });
+
+        layer.add(textbox);
+        layer.add(statementText);
+        layer.add(guideText);
+        layer.add(andBox);
+        layer.add(notBox);
+        layer.add(orBox);
+        layer.add(drop1);
+        layer.add(drop2);
+        layer.add(drop3);
+        layer.add(drop4);
+        layer.add(drop5);
+        layer.add(drop6);
+        layer.add(drop7);
+        layer.add(drop8);
+        layer.add(drop9);
+        layer.add(P);
+        layer.add(Q);
+        layer.add(R);
+        layer.add(S);
+        layer.add(ptext);
+        layer.add(qtext);
+        layer.add(rtext);
+        layer.add(stext);
+        layer.add(PtoDrop6);
+        layer.add(StoDrop8);
+        layer.add(drop2todrop4);
+        layer.add(QtoA);
+        layer.add(RtoA);
+        layer.add(PtoA);
+        layer.add(StoA);
+        layer.add(QA);
+        layer.add(RA);
+        layer.add(AtoDrop1);
+        layer.add(QAtoDrop1);
+        layer.add(QAtoDrop2);
+        layer.add(RAtodrop2);
+        layer.add(RAtoDrop3);
+        layer.add(SAtoDrop3);
+        layer.add(drop1toDrop5A);
+        layer.add(drop1toDrop5B);
+        layer.add(drop5toDrop7C);
+        layer.add(drop5toDrop7B);
+        layer.add(drop1toDrop5C);
+        layer.add(drop4toB);
+        layer.add(drop5B);
+        layer.add(BtoDrop6);
+        layer.add(BtoDrop7);
+        layer.add(Drop3toDrop6A);
+        layer.add(Drop3toDrop6B);
+        layer.add(Drop3toDrop6C);
+        layer.add(drop6todrop8A);
+        layer.add(drop6todrop8B);
+        layer.add(drop6todrop8C);
+        layer.add(drop6toC);
+        layer.add(drop7todrop9A);
+        layer.add(drop7todrop9B);
+        layer.add(drop7todrop9C);
+        layer.add(drop8todrop9A);
+        layer.add(drop8todrop9B);
+        layer.add(drop8todrop9C);
+        /*layer.add(PtoB);
+        layer.add(drop4toend);
+        layer.add(end);*/
+        stage.add(layer);   
+        notBox.on("dragend", function(){
+          checkDrop(notBox);
+        });
+        andBox.on("dragend", function(){
+          checkDrop(andBox);
+        });
+        orBox.on("dragend", function(){
+          checkDrop(orBox);
+        });
+      function resetXY()
+      {
+        notBox.setPosition(700, 0);
+        andBox.setPosition(600, 0);
+        orBox.setPosition(790, 0);
+        layer.draw();
+      }
+      function checkDrop(object)
+      {
+        if((object.getPosition().x >= 190 && object.getPosition().x <= 280) && (object.getPosition().y >= 190 && object.getPosition().y <= 280))
+        {
+          doDrop(object, drop1);
+
+        }
+        else if((object.getPosition().x >= 190 && object.getPosition().x <= 280) && (object.getPosition().y >= 260 && object.getPosition().y <= 350))
+        {
+          doDrop(object, drop2);
+        }
+        else if((object.getPosition().x >= 190 && object.getPosition().x <= 280) && (object.getPosition().y >= 460 && object.getPosition().y <= 550))
+        {
+          doDrop(object, drop3);
+        }
+        else if((object.getPosition().x >= 330 && object.getPosition().x <= 420) && (object.getPosition().y >= 330 && object.getPosition().y <= 420))
+        {
+          doDrop(object, drop4);
+        }
+        else if((object.getPosition().x >= 500 && object.getPosition().x <= 590) && (object.getPosition().y >= 270 && object.getPosition().y <= 360))
+        {
+          doDrop(object, drop5);
+        }
+        else if((object.getPosition().x >= 500 && object.getPosition().x <= 590) && (object.getPosition().y >= 420 && object.getPosition().y <= 510))
+        {
+          doDrop(object, drop6);
+        }
+        else if((object.getPosition().x >= 670 && object.getPosition().x <= 760) && (object.getPosition().y >= 140 && object.getPosition().y <= 230))
+        {
+          doDrop(object, drop7);
+        }
+        else if((object.getPosition().x >= 670 && object.getPosition().x <= 760) && (object.getPosition().y >= 530 && object.getPosition().y <= 620))
+        {
+          doDrop(object, drop8);
+        }
+        else if((object.getPosition().x >= 850 && object.getPosition().x <= 940) && (object.getPosition().y >= 330 && object.getPosition().y <= 420))
+        {
+          doDrop(object, drop9);
+        }
+        else
+        {
+          resetXY(object);  
+        }
+        layer.draw()
+
+      }
+
+      //handles dropping T/F buttons onto dropzones
+      function doDrop(object, dropZone)
+      {
+        var x = dropZone.getPosition().x;
+        var y = dropZone.getPosition().y;
+        var image = object.getFillPatternImage();
+        console.log("image: " + image);
+        dropZone.setFillPatternImage(image);
+        dropZone.setFillPatternRepeat('no-repeat');
+
+        resetXY();
+        layer.draw();
+      }
+      clear.onclick=function clear(){
+        drop1.setFillPatternImage("");
+        drop2.setFillPatternImage("");
+        drop3.setFillPatternImage("");
+        drop4.setFillPatternImage("");
+        drop5.setFillPatternImage("");
+        drop6.setFillPatternImage("");
+        resetXY();
+        layer.draw();
+      }
+      help.onclick = function helpInfo(){
+          alert("Hey there! Having trouble? \nDrag the gates you see on the top of the screen into the drop box you think it belongs in to match the statement at the top of the screen.\nDrop boxes are numbered from top to bottom, left to right.");
+        }
+      check.onclick=function checkGates(){
+        var error = 0;
+        var errorList = new Array();
+        if(drop1.getFillPatternImage()==null||drop2.getFillPatternImage()==null||drop3.getFillPatternImage()==null||drop4.getFillPatternImage()==null||drop5.getFillPatternImage()==null||drop6.getFillPatternImage()==null||drop7.getFillPatternImage()==null||drop8.getFillPatternImage()==null||drop9.getFillPatternImage()==null){
+          errorList.push("Blank Spots - keep going!");
+          error++;
+        }
+        else{
+          //check if first two boxes are and or or.
+          if(drop1.getFillPatternImage()!=images.andImage){
+            errorList.push("Drop box 1 has the wrong gate! Check your work!");
+            error++;
+          }
+          if(drop2.getFillPatternImage()!=images.orImage){
+            errorList.push("Drop box 2 has the wrong gate! Check your work!");
+            error++;
+          }
+          if(drop3.getFillPatternImage()!=images.andImage){
+              errorList.push("Drop box 3 has the wrong gate! Recheck your work!");
+              error++;
+          }
+          if(drop4.getFillPatternImage()!=images.notImage){
+              errorList.push("Drop box 4 has the wrong gate! Recheck your work!");
+              error++;
+          }
+          if(drop5.getFillPatternImage()!=images.andImage){
+              errorList.push("Dropbox 5 has the wrong gate! Recheck your work!");
+              error++;
+          }
+          if(drop6.getFillPatternImage()!=images.orImage){
+              errorList.push("Drop box 6 has the wrong gate! Recheck your work!");
+              error++;
+          }
+          if(drop7.getFillPatternImage()!=images.orImage){
+              errorList.push("Drop box 7 has the wrong gate! Recheck your work!");
+              error++;
+          }
+          if(drop8.getFillPatternImage()!=images.orImage){
+              errorList.push("Drop box 8 has the wrong gate! Recheck your work!");
+              error++;
+          }
+          if(drop9.getFillPatternImage()!=images.orImage){
+              errorList.push("Drop box 9 has the wrong gate! Recheck your work!");
+              error++;
+          }
+        }
+      if(error == 0){
+        alert("Congratulations! You got the perfect combination!");
+      }
+      else{
+        var tempString = "There are errors: ";
+
+        for(var i = 0; i < errorList.length; i++){
+          tempString += "\n-" + errorList[i];
+        }
+        tempString +="\nTry again";
+        alert(tempString);
+      }
+
+    }
+
+      }
+      var sources = {
+        notImage: 'images/Not.png',
+        orImage:'images/Or.png',
+        andImage:'images/And.png'
+      };
+
+      loadImages(sources, function(images) {
+        draw(images);
+      });
+
+
+    </script>
+  </body>
+  </html>

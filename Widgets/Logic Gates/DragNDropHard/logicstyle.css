@@ -34,5 +34,8 @@ html{
 #buttonDiv{
 	position: absolute;
 	top: 50%;
-	left: 930px;
+	left: 1000px;
+}
+.buttons{
+	float: right;
 }

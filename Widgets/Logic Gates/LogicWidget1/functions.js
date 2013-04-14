@@ -101,14 +101,12 @@ function doit()
 //checks if drop location is within bounds of a dropzone. if so, passes event on to drop handler
 function checkDrop(object)
 {
-	var mousePos = stage.getMousePosition();
-
-	if((mousePos.x >= 175 && mousePos.x <= 225) && (mousePos.y >= 175 && mousePos.y <= 225))
+	if((object.getPosition().x >= 175 && object.getPosition().x <= 225) && (object.getPosition().y >= 175 && object.getPosition().y <= 225))
 	{
 		doDrop(object, leftDrop);
 	}
 
-	else if((mousePos.x >= 375 && mousePos.x <= 425) && (mousePos.y >= 175 && mousePos.y <= 225))
+	else if((object.getPosition().x >= 375 && object.getPosition().x <= 425) && (object.getPosition().y >= 175 && object.getPosition().y <= 225))
 	{
 		doDrop(object, rightDrop);
 	}

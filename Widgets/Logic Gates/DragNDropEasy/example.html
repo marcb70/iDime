@@ -320,25 +320,23 @@
       }
       function checkDrop(object)
       {
-        var mousePos = stage.getMousePosition();
-
-        if((mousePos.x >= 190 && mousePos.x <= 290) && (mousePos.y >= 110 && mousePos.y <= 210))
+        if((object.getPosition().x >= 190 && object.getPosition().x <= 290) && (object.getPosition().y >= 110 && object.getPosition().y <= 210))
         {
           console.log("drop1 dropped image: " + drop1.getFillPatternImage());
 
           doDrop(object, drop1);
         }
-        else if((mousePos.x >= 190 && mousePos.x <= 290) && (mousePos.y >= 275 && mousePos.y <= 375))
+        else if((object.getPosition().x >= 190 && object.getPosition().x <= 290) && (object.getPosition().y >= 275 && object.getPosition().y <= 375))
         {
           console.log("drop2 dropped image: " + drop2.getFillPatternImage());
           doDrop(object, drop2);
         }
-        else if((mousePos.x >= 370 && mousePos.x <= 470) && (mousePos.y >= 200&& mousePos.y <= 300))
+        else if((object.getPosition().x >= 370 && object.getPosition().x <= 470) && (object.getPosition().y >= 200&& object.getPosition().y <= 300))
         {
           console.log("drop3 dropped image: " + drop3.getFillPatternImage());
           doDrop(object, drop3);
         }
-        else if((mousePos.x >= 550 && mousePos.x <= 650) && (mousePos.y >= 200 && mousePos.y <= 300))
+        else if((object.getPosition().x >= 550 && object.getPosition().x <= 650) && (object.getPosition().y >= 200 && object.getPosition().y <= 300))
         {
           console.log("drop4 dropped image: " + drop4.getFillPatternImage());
           doDrop(object, drop4);
@@ -377,26 +375,27 @@
         }
       check.onclick=function checkGates(){
         var error = 0;
+        var errorList = new Array();
         if(drop1.getFillPatternImage()==null||drop2.getFillPatternImage()==null||drop3.getFillPatternImage()==null||drop1.getFillPatternImage()==null){
-          alert("Blank Spots - redo");
+          errorList.push("Blank Spots - keep going!");
           error++;
         }
         else{
           //check if first two boxes are and or or.
           if(drop1.getFillPatternImage()!=images.andImage){
-              alert("Drop zone 1 has the wrong gate! Check your work!");
+              errorList.push("Drop zone 1 has the wrong gate! Check your work!");
               error++;
             }
           if(drop2.getFillPatternImage()!=images.orImage){
-              alert("Drop zone 2 has the wrong gate! Check your work!");
+              errorList.push("Drop zone 2 has the wrong gate! Check your work!");
               error++;
           }
           if(drop3.getFillPatternImage()!=images.notImage){
-              alert("Drop zone 3 has the wrong gate! Check your work!");
+              errorList.push("Drop zone 3 has the wrong gate! Check your work!");
               error++;
           }
           if(drop4.getFillPatternImage()!=images.orImage){
-              alert("Drop zone 4 has the wrong gate! Check your work!");
+              errorList.push("Drop zone 4 has the wrong gate! Check your work!");
               error++;
           }
         }
@@ -404,7 +403,14 @@
           alert("Congratulations! You've found the perfect combination!");
         }
         else{
-          alert("Try again");
+          var tempString = "There are errors: ";
+
+          for(var i = 0; i < errorList.length; i++){
+            tempString += "\n-" + errorList[i];
+          }
+          tempString +="\nTry again";
+          alert(tempString);
+
         }
       }
 
