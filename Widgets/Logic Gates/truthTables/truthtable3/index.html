@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="kinetic-v4.3.3.min.js"></script>
+    <script src="functions.js"></script>
+    <script src="objects.js"></script>
+    <script src="events.js"></script>
+  </head>
+  <body>
+    <div id = "buttonDiv"><input type = "submit" value = "check it!" id = "submit" onclick = "updateTable();" /></div>
+    <div id="container"></div>
+    <script>
+  //creates canvas we'll be working with (using 90% dimensions)
+      var textStage = new Kinetic.Stage({
+        container: 'buttonDiv',
+        width: 600,
+        height: 100
+      });
+      var textLayer = new Kinetic.Layer();
+      
+      var guideText = new Kinetic.Text({
+          x: 0,
+          y: 0,
+          text: 'P and Q have been filled in for you. \nNow, build the truth table for this statement: ',
+          fontSize: 20,
+          fontFamily: 'Calibri',
+          fill: 'black',
+          padding: 20
+        });
+
+        var statementText = new Kinetic.Text({
+          x: 50,
+          y: 70,
+          text: '(P -> Q) <--> (R + S)',
+          fontSize: 18,
+          fontFamily: 'Calibri',
+          fill: 'red',
+          padding: 10
+        });      
+
+      textLayer.add(statementText);
+      textLayer.add(guideText);
+      textStage.add(textLayer);
+
+      var stage = new Kinetic.Stage({
+        container: 'container',
+        width: 800,
+        height: 800
+      });
+      var layer = new Kinetic.Layer();
+
+
+
+      var tableShapes = new Kinetic.Layer();
+
+
+      
+      tableShapes.add(truthTable);
+      tableShapes.add(column1);
+      tableShapes.add(column2);
+      tableShapes.add(column3);
+      tableShapes.add(column4);
+      tableShapes.add(column5);
+      tableShapes.add(column6);
+      tableShapes.add(topLine);
+      tableShapes.add(row1);
+      tableShapes.add(row2);
+      tableShapes.add(row3);
+      tableShapes.add(row4);
+      tableShapes.add(row5);
+      tableShapes.add(row6);
+      tableShapes.add(row7);
+      tableShapes.add(row8);
+      tableShapes.add(row9);
+      tableShapes.add(row10);
+      tableShapes.add(row11);
+      tableShapes.add(row12);
+      tableShapes.add(row13);
+      tableShapes.add(row14);
+      tableShapes.add(row15);
+      tableShapes.add(circle1x1);
+      tableShapes.add(circle1x2);
+      tableShapes.add(circle1x3);
+      tableShapes.add(circle1x4);
+      tableShapes.add(circle1x5);
+      tableShapes.add(circle1x6);
+      tableShapes.add(circle1x7);
+      tableShapes.add(circle1x8);
+      tableShapes.add(circle1x9);
+      tableShapes.add(circle1x10);
+      tableShapes.add(circle1x11);
+      tableShapes.add(circle1x12);
+      tableShapes.add(circle1x13);
+      tableShapes.add(circle1x14);
+      tableShapes.add(circle1x15);
+      tableShapes.add(circle1x16);
+      tableShapes.add(circle2x1);
+      tableShapes.add(circle2x2);
+      tableShapes.add(circle2x3);
+      tableShapes.add(circle2x4);
+      tableShapes.add(circle2x5);
+      tableShapes.add(circle2x6);
+      tableShapes.add(circle2x7);
+      tableShapes.add(circle2x8);
+      tableShapes.add(circle2x9);
+      tableShapes.add(circle2x10);
+      tableShapes.add(circle2x11);
+      tableShapes.add(circle2x12);
+      tableShapes.add(circle2x13);
+      tableShapes.add(circle2x14);
+      tableShapes.add(circle2x15);
+      tableShapes.add(circle2x16);
+      tableShapes.add(circle3x1);
+      tableShapes.add(circle3x2);
+      tableShapes.add(circle3x3);
+      tableShapes.add(circle3x4);
+      tableShapes.add(circle3x5);
+      tableShapes.add(circle3x6);
+      tableShapes.add(circle3x7);
+      tableShapes.add(circle3x8);
+      tableShapes.add(circle3x9);
+      tableShapes.add(circle3x10);
+      tableShapes.add(circle3x11);
+      tableShapes.add(circle3x12);
+      tableShapes.add(circle3x13);
+      tableShapes.add(circle3x14);
+      tableShapes.add(circle3x15);
+      tableShapes.add(circle3x16);
+      tableShapes.add(circle4x1);
+      tableShapes.add(circle4x2);
+      tableShapes.add(circle4x3);
+      tableShapes.add(circle4x4);
+      tableShapes.add(circle4x5);
+      tableShapes.add(circle4x6);
+      tableShapes.add(circle4x7);
+      tableShapes.add(circle4x8);
+      tableShapes.add(circle4x9);
+      tableShapes.add(circle4x10);
+      tableShapes.add(circle4x11);
+      tableShapes.add(circle4x12);
+      tableShapes.add(circle4x13);
+      tableShapes.add(circle4x14);
+      tableShapes.add(circle4x15);
+      tableShapes.add(circle4x16);
+      tableShapes.add(circle5x1);
+      tableShapes.add(circle5x2);
+      tableShapes.add(circle5x3);
+      tableShapes.add(circle5x4);      
+      tableShapes.add(circle5x5);      
+      tableShapes.add(circle5x6);      
+      tableShapes.add(circle5x7);      
+      tableShapes.add(circle5x8);
+      tableShapes.add(circle5x9);
+      tableShapes.add(circle5x10);
+      tableShapes.add(circle5x11);
+      tableShapes.add(circle5x12);
+      tableShapes.add(circle5x13);
+      tableShapes.add(circle5x14);
+      tableShapes.add(circle5x15);
+      tableShapes.add(circle5x16);      
+      tableShapes.add(circle6x1);
+      tableShapes.add(circle6x2);
+      tableShapes.add(circle6x3);
+      tableShapes.add(circle6x4);      
+      tableShapes.add(circle6x5);      
+      tableShapes.add(circle6x6);      
+      tableShapes.add(circle6x7);      
+      tableShapes.add(circle6x8);
+      tableShapes.add(circle6x9);
+      tableShapes.add(circle6x10);
+      tableShapes.add(circle6x11);
+      tableShapes.add(circle6x12);
+      tableShapes.add(circle6x13);
+      tableShapes.add(circle6x14);
+      tableShapes.add(circle6x15);
+      tableShapes.add(circle6x16);
+      tableShapes.add(circle7x1);
+      tableShapes.add(circle7x2);
+      tableShapes.add(circle7x3);
+      tableShapes.add(circle7x4);      
+      tableShapes.add(circle7x5);      
+      tableShapes.add(circle7x6);      
+      tableShapes.add(circle7x7);      
+      tableShapes.add(circle7x8);
+      tableShapes.add(circle7x9);
+      tableShapes.add(circle7x10);
+      tableShapes.add(circle7x11);
+      tableShapes.add(circle7x12);
+      tableShapes.add(circle7x13);
+      tableShapes.add(circle7x14);
+      tableShapes.add(circle7x15);
+      tableShapes.add(circle7x16);      
+      tableShapes.add(tableP);
+      tableShapes.add(tableQ);
+      tableShapes.add(tableR);
+      tableShapes.add(tableS);
+      tableShapes.add(PimpliesQ);
+      tableShapes.add(RorS);
+      tableShapes.add(fullStatement);
+      stage.add(tableShapes);
+      stage.add(layer);
+
+      </script>
+  </body>
+</html>

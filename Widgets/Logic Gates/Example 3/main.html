@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="kinetic-v4.3.3.min.js"></script>
+    <script src="functions.js"></script>
+    <script src="objects.js"></script>
+    <script src="events.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+  //creates canvas we'll be working with (using 90% dimensions)
+      var stage = new Kinetic.Stage({
+        container: 'container',
+        width: 922,
+        height: 691
+      });
+      var layer = new Kinetic.Layer();
+      var tableShapes = new Kinetic.Layer();
+      var answerLayer = new Kinetic.Layer();
+
+      layer.add(P);
+      layer.add(Q);
+      layer.add(PtoNor);
+      layer.add(QtoNor);
+      layer.add(QtoNot);
+      layer.add(NortoOr);
+      layer.add(NottoOr);
+      layer.add(outputIndicator);
+      tableShapes.add(topLine);
+      tableShapes.add(rightLine);
+      tableShapes.add(leftLine);
+      tableShapes.add(bottomLine);
+      tableShapes.add(column1);
+      tableShapes.add(column2);
+      tableShapes.add(row1);
+      tableShapes.add(row2);
+      tableShapes.add(row3);
+      tableShapes.add(circle1x1);
+      tableShapes.add(circle1x2);
+      tableShapes.add(circle1x3);
+      tableShapes.add(circle1x4);
+      tableShapes.add(circle2x1);
+      tableShapes.add(circle2x2);
+      tableShapes.add(circle2x3);
+      tableShapes.add(circle2x4);
+      tableShapes.add(circle3x1);
+      tableShapes.add(circle3x2);
+      tableShapes.add(circle3x3);
+      tableShapes.add(circle3x4);
+      tableShapes.add(tableP);
+      tableShapes.add(tableQ);
+      tableShapes.add(tableOutput);
+      answerLayer.add(check1);
+      answerLayer.add(check2);
+      answerLayer.add(check3);
+      answerLayer.add(check4);
+      stage.add(tableShapes);
+      stage.add(answerLayer);
+      stage.add(layer);
+      </script>
+  </body>
+</html>

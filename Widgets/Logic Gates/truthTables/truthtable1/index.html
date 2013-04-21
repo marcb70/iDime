@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="kinetic-v4.3.3.min.js"></script>
+    <script src="functions.js"></script>
+    <script src="objects.js"></script>
+    <script src="events.js"></script>
+  </head>
+  <body>
+    <div id = "buttonDiv"><input type = "submit" value = "check it!" id = "submit" onclick = "updateTable();" /></div>
+    <div id="container"></div>
+    <script>
+  //creates canvas we'll be working with (using 90% dimensions)
+      var textStage = new Kinetic.Stage({
+        container: 'buttonDiv',
+        width: 600,
+        height: 100
+      });
+      var textLayer = new Kinetic.Layer();
+      
+      var guideText = new Kinetic.Text({
+          x: 0,
+          y: 0,
+          text: 'P and Q have been filled in for you. \nNow, build the truth table for this statement: ',
+          fontSize: 20,
+          fontFamily: 'Calibri',
+          fill: 'black',
+          padding: 20
+        });
+
+        var statementText = new Kinetic.Text({
+          x: 50,
+          y: 70,
+          text: '(P * Q) + ~(P + Q)',
+          fontSize: 18,
+          fontFamily: 'Calibri',
+          fill: 'red',
+          padding: 10
+        });      
+
+      textLayer.add(statementText);
+      textLayer.add(guideText);
+      textStage.add(textLayer);
+
+      var stage = new Kinetic.Stage({
+        container: 'container',
+        width: 600,
+        height: 600
+      });
+      var layer = new Kinetic.Layer();
+
+
+
+      var tableShapes = new Kinetic.Layer();
+
+
+      
+      tableShapes.add(truthTable);
+      /*tableShapes.add(rightLine);
+      tableShapes.add(leftLine);
+      tableShapes.add(bottomLine);*/
+      tableShapes.add(column1);
+      tableShapes.add(column2);
+      tableShapes.add(column3);
+      tableShapes.add(column4);
+      tableShapes.add(column5);
+      tableShapes.add(topLine);
+      tableShapes.add(row1);
+      tableShapes.add(row2);
+      tableShapes.add(row3);
+      tableShapes.add(circle1x1);
+      tableShapes.add(circle1x2);
+      tableShapes.add(circle1x3);
+      tableShapes.add(circle1x4);
+      tableShapes.add(circle2x1);
+      tableShapes.add(circle2x2);
+      tableShapes.add(circle2x3);
+      tableShapes.add(circle2x4);
+      tableShapes.add(circle3x1);
+      tableShapes.add(circle3x2);
+      tableShapes.add(circle3x3);
+      tableShapes.add(circle3x4);
+      tableShapes.add(circle4x1);
+      tableShapes.add(circle4x2);
+      tableShapes.add(circle4x3);
+      tableShapes.add(circle4x4);
+      tableShapes.add(circle5x1);
+      tableShapes.add(circle5x2);
+      tableShapes.add(circle5x3);
+      tableShapes.add(circle5x4);      
+      tableShapes.add(circle6x1);
+      tableShapes.add(circle6x2);
+      tableShapes.add(circle6x3);
+      tableShapes.add(circle6x4);      
+      tableShapes.add(tableP);
+      tableShapes.add(tableQ);
+      tableShapes.add(PORQ);
+      tableShapes.add(NOTPORQ);
+      tableShapes.add(PANDQ);
+      tableShapes.add(fullStatement);
+      stage.add(tableShapes);
+      stage.add(layer);
+
+      </script>
+  </body>
+</html>

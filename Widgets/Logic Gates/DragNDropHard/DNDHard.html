@@ -60,7 +60,7 @@
           text: '{P + [(P * Q) * ~(Q + R)]} + {S + [~(Q + R) + (R * S)]}',
           fontSize: 18,
           fontFamily: 'Calibri',
-          fill: 'black',
+          fill: 'red',
           padding: 10
         });
 
@@ -302,8 +302,8 @@
           strokeWidth: 5
         });
 
-        var PtoA = new Kinetic.Line({
-          points: [120, 160, 120, 220],
+        var PtoDrop1 = new Kinetic.Line({
+          points: [120, 160, 120, 220, 120, 220, 190, 220],
           stroke: 'black',
           strokeWidth: 5
         });
@@ -320,177 +320,72 @@
           strokeWidth: 5          
         });
 
-        var StoA = new Kinetic.Line({
-          points: [120, 590, 120, 550],
+        var StoDrop3 = new Kinetic.Line({
+          points: [120, 590, 120, 550, 120, 550, 190, 550],
           stroke: 'black',
           strokeWidth: 5
         });
 
-        var QA = new Kinetic.Line({
-          points: [120, 360, 120, 260],
+        var Drop1Drop2Connect = new Kinetic.Line({
+          points: [120, 260, 190, 260, 120, 260, 120, 260, 120, 360, 190, 360],
           stroke: 'black',
           strokeWidth: 5
         });
 
-        var RA = new Kinetic.Line({
-          points: [120, 510, 120, 400],
-          stroke: 'black',
+        var Drop2Drop3Connect = new Kinetic.Line({
+          points: [120, 400, 190, 400, 120, 400, 120, 400, 120, 510, 190, 510],
+          stroke: 'black', 
           strokeWidth: 5
         });
 
-        var AtoDrop1 = new Kinetic.Line({
-          points: [120, 220, 190, 220],
-          stroke: 'black',
-          strokeWidth: 5
-        });
-
-        var QAtoDrop1 = new Kinetic.Line({
-          points: [120, 260, 190, 260],
-          stroke: 'black',
-          strokeWidth: 5
-        });
-        var QAtoDrop2 = new Kinetic.Line({
-          points: [120, 360, 190, 360],
-          stroke: 'black',
-          strokeWidth: 5
-        });
-
-        var RAtodrop2 = new Kinetic.Line({
-          points: [120, 400, 190, 400],
-          stroke: 'black',
-          strokeWidth: 5
-        });
-
-        var RAtoDrop3 = new Kinetic.Line({
-          points: [120, 510, 190, 510],
-          stroke: 'black',
-          strokeWidth: 5
-        });
-
-        var SAtoDrop3 = new Kinetic.Line({
-          points: [120, 550, 190, 550],
-          stroke: 'black',
-          strokeWidth: 5
-        });
         
-        var drop1toDrop5A = new Kinetic.Line({
-          points: [280, 235, 460, 235],
-          stroke: 'black',
-          strokeWidth: 5
-        });
-        var drop1toDrop5B = new Kinetic.Line({
-          points: [460, 295, 460, 235],
+        var drop1toDrop5 = new Kinetic.Line({
+          points: [280, 235, 460, 235, 460, 295, 460, 235, 460, 295, 500, 295],
           stroke: 'black',
           strokeWidth: 5
         });
 
-        var drop1toDrop5C = new Kinetic.Line({
-          points: [460, 295, 500, 295],
-          stroke: 'black',
-          strokeWidth: 5
-        });
         var drop4toB = new Kinetic.Line({
           points: [420, 375, 460, 375],
           stroke: 'black',
           strokeWidth: 5
         });    
-        var drop5toDrop7A = new Kinetic.Line({
-          points: [460, 295, 500, 295],
+
+        var Drop6Drop7Connect = new Kinetic.Line({
+          points: [460, 325, 500, 325, 460, 325, 460, 435, 460, 435, 500, 435], 
           stroke: 'black',
-          strokeWidth: 5
-        });    
-        var drop5B = new Kinetic.Line({
-          points: [460, 325, 460, 435],
+          strokeWidth: '5'
+        });
+
+        var drop5toDrop7 = new Kinetic.Line({
+          points: [590, 325, 630, 325, 630, 325, 630, 195, 630, 195, 670, 195],
           stroke: 'black',
           strokeWidth: 5
         });
 
-        var BtoDrop6 = new Kinetic.Line({
-          points: [460, 325, 500, 325], 
-          stroke: 'black',
-          strokeWidth: '5'
-        });
-        var BtoDrop7 = new Kinetic.Line({
-          points: [460, 435, 500, 435], 
-          stroke: 'black',
-          strokeWidth: '5'
-        });
-        var drop5toDrop7C = new Kinetic.Line({
-          points: [630, 195, 670, 195],
-          stroke: 'black',
-          strokeWidth: 5
-        });
-        var drop6toC = new Kinetic.Line({
-          points: [590, 325, 630, 325],
-          stroke: 'black',
-          strokeWidth: 5
-        });
-        var drop5toDrop7B = new Kinetic.Line({
-          points: [630, 325, 630, 195],
-          stroke: 'black',
-          strokeWidth: 5
-        });
-       var Drop3toDrop6A = new Kinetic.Line({
-          points: [280, 530, 460, 530], 
+       var Drop3toDrop6 = new Kinetic.Line({
+          points: [280, 530, 460, 530, 460, 530, 460, 490, 460, 490, 500, 490], 
           stroke: 'black',
           strokeWidth: '5'
         }); 
-        var Drop3toDrop6B = new Kinetic.Line({
-          points: [460, 530, 460, 490], 
-          stroke: 'black',
-          strokeWidth: '5'
-        }); 
-        var Drop3toDrop6C = new Kinetic.Line({
-          points: [460, 490, 500, 490], 
-          stroke: 'black',
-          strokeWidth: '5'
-        });        
-        var drop6todrop8A = new Kinetic.Line({
-          points: [590, 470, 630, 470],
-          stroke: 'black',
-          strokeWidth: 5
-        });
-         var drop6todrop8B = new Kinetic.Line({
-          points: [630, 560, 630, 470],
-          stroke: 'black',
-          strokeWidth: 5
-        });
-        var drop6todrop8C = new Kinetic.Line({
-          points: [630, 560, 670, 560],
+      
+        var drop6todrop8 = new Kinetic.Line({
+          points: [590, 470, 630, 470, 630, 560, 630, 470, 630, 560, 670, 560],
           stroke: 'black',
           strokeWidth: 5
         });
 
-        var drop7todrop9A = new Kinetic.Line({
-          points: [760, 190, 805, 190],
+        var drop7todrop9 = new Kinetic.Line({
+          points: [760, 190, 805, 190, 805, 190, 805, 360, 805, 360, 850, 360],
           stroke: 'black',
           strokeWidth: 5
         });
-        var drop7todrop9B = new Kinetic.Line({
-          points: [805, 190, 805, 360],
+        var drop8todrop9 = new Kinetic.Line({
+          points: [760, 575, 805, 575, 805, 575, 805, 390, 805, 390, 850, 390],
           stroke: 'black',
           strokeWidth: 5
         }); 
-        var drop7todrop9C = new Kinetic.Line({
-          points: [805, 360, 850, 360],
-          stroke: 'black',
-          strokeWidth: 5
-        });
-        var drop8todrop9A = new Kinetic.Line({
-          points: [760, 575, 805, 575],
-          stroke: 'black',
-          strokeWidth: 5
-        }); 
-        var drop8todrop9B = new Kinetic.Line({
-          points: [805, 575, 805, 390],
-          stroke: 'black',
-          strokeWidth: 5
-        });
-        var drop8todrop9C = new Kinetic.Line({
-          points: [805, 390, 850, 390],
-          stroke: 'black',
-          strokeWidth: 5
-        }); 
+
         var end = new Kinetic.Circle({
           x: 710,
           y: 330,
@@ -528,38 +423,18 @@
         layer.add(drop2todrop4);
         layer.add(QtoA);
         layer.add(RtoA);
-        layer.add(PtoA);
-        layer.add(StoA);
-        layer.add(QA);
-        layer.add(RA);
-        layer.add(AtoDrop1);
-        layer.add(QAtoDrop1);
-        layer.add(QAtoDrop2);
-        layer.add(RAtodrop2);
-        layer.add(RAtoDrop3);
-        layer.add(SAtoDrop3);
-        layer.add(drop1toDrop5A);
-        layer.add(drop1toDrop5B);
-        layer.add(drop5toDrop7C);
-        layer.add(drop5toDrop7B);
-        layer.add(drop1toDrop5C);
+        layer.add(PtoDrop1);
+        layer.add(Drop1Drop2Connect);
+        layer.add(Drop2Drop3Connect);
+        layer.add(StoDrop3);
+        layer.add(drop1toDrop5);
+        layer.add(drop5toDrop7);
         layer.add(drop4toB);
-        layer.add(drop5B);
-        layer.add(BtoDrop6);
-        layer.add(BtoDrop7);
-        layer.add(Drop3toDrop6A);
-        layer.add(Drop3toDrop6B);
-        layer.add(Drop3toDrop6C);
-        layer.add(drop6todrop8A);
-        layer.add(drop6todrop8B);
-        layer.add(drop6todrop8C);
-        layer.add(drop6toC);
-        layer.add(drop7todrop9A);
-        layer.add(drop7todrop9B);
-        layer.add(drop7todrop9C);
-        layer.add(drop8todrop9A);
-        layer.add(drop8todrop9B);
-        layer.add(drop8todrop9C);
+        layer.add(Drop6Drop7Connect);
+        layer.add(Drop3toDrop6);
+        layer.add(drop6todrop8);
+        layer.add(drop7todrop9);
+        layer.add(drop8todrop9);
         /*layer.add(PtoB);
         layer.add(drop4toend);
         layer.add(end);*/
