@@ -5,12 +5,6 @@ html{
 	font-size: 16px;
 }
 
-img
-{
-	height: inherit;
-	width: inherit;
-}
-
 .select {
 	
 	background: #77AA00!important;
@@ -120,16 +114,16 @@ label {
 	display: block;
 }
 
-div.box{
+.box{
   width: 460px;
   height: 500px;
   overflow: scroll;
 }
 
-.div{
+.options{
 	min-height: 20px;
 	max-width: 300px;
-	display: none;
+	display: block;
 	border-style: inset;
 	border-color: black;
 }
@@ -183,7 +177,7 @@ div.box{
 	overflow: auto;
 	display: none;
 }
-.clonedMarkInput{
+.clonedMarkingsInput{
 	min-height: 20px;
 	overflow: auto;
 	display: none;
@@ -260,12 +254,15 @@ div.box{
 {
 	display: none;
 }
-
+#markDiv
+{
+	display: none;
+}
 #leftDiv
 {
 	float: left;
 	height: 100%;
-	width: 25%;
+	width: 30%;
 	overflow-y:scroll;
 }
 
@@ -273,7 +270,7 @@ div.box{
 {
 	float: left;
 	height: 100%;
-	width: 75%;
+	width: 70%;
 	overflow-y:scroll;
 }
 
@@ -283,23 +280,56 @@ div.box{
 
 }
 
+#rightTopTop
+{
+	height: 90%;
+
+}
+#rightTopBottom
+{
+	height: 10%;
+
+}
+
 #rightBottom
 {
 	height: 50%;
 }
 
 #selectedCatDisplay
-{
+{	
 	height: 100%;
 	width: 100%;
 	overflow-y:scroll;
 	overflow-x: :none;
 }
 
+#catAttributes
+{
+	float:left;
+	height: 100%;
+	width: 50%;
+}
+.catDisplay{
+	float:left;
+	height: 100%;
+	width: 50%;
+}
+.catDisplay img
+{
+	width: 75%;
+	height: 75%;
+}
 .catThumb
 {
 	float: left;
 	height: 33%;
 	width: 25%;
+}
+
+.catThumb img
+{
+	height: inherit;
+	width: inherit;
 }
 

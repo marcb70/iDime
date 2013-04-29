@@ -14,13 +14,6 @@ function Cat(){
 	var img = "catPic.gif";
 	var array = new Array()
 
-	/*this.matchMatch = function(matchList){
-		for(var i = 0; i < matchList.length; i++){
-			if(matchList[i]==breed)
-				array
-		}
-	}*/
-
 	this.setName = function(aname) {
 		name = aname;
 	};
@@ -32,17 +25,17 @@ function Cat(){
 	this.setColor = function(aColorNum){
 		//color = aColorNum;
 		if(aColorNum == 0)
-			color = "white";
+			color = "White";
 		else if(aColorNum==1)
-			color="black";
+			color="Black";
 		else if(aColorNum==2)
-			color = "orange";
+			color = "Orange";
 		else if(aColorNum==3)
-			color = "calico";
+			color = "Calico";
 		else if(aColorNum==4)
-			color="gray";
+			color="Gray";
 		else if(aColorNum==5)
-			color="brown";
+			color="Brown";
 		else
 			color=0;
 	};
@@ -54,17 +47,17 @@ function Cat(){
 	this.setBreed = function(aBreed){
 		//breed = aBreed;
 		if(aBreed==0)
-			breed="tabby";
+			breed="Tabby";
 		else if(aBreed==1)
-			breed="maine coon";
+			breed="Maine Coon";
 		else if(aBreed==2)
-			breed="persian";
+			breed="Persian";
 		else if(aBreed==3)
-			breed="siamese";
+			breed="Siamese";
 		else if(aBreed==4)
-			breed="ragdoll";
+			breed="Ragdoll";
 		else if(aBreed==5)
-			breed="sphinx";
+			breed="Sphinx";
 		else
 			breed=0;
 	};
@@ -76,9 +69,9 @@ function Cat(){
 	this.setMale = function(maleBoolean){
 		//true - male, false -female
 		if(maleBoolean==false)
-			isMale="female";
+			isMale="Female";
 		else
-			isMale="male";
+			isMale="Male";
 
 	};
 
@@ -90,11 +83,11 @@ function Cat(){
 		// none - 0, striped - 1, spots - 2
 		//markings = aMarking;
 		if(aMarking==0)
-			markings="none";
+			markings="None";
 		else if(aMarking==1)
-			markings="stripes";
+			markings="Stripes";
 		else if(aMarking==2)
-			markings="spots";
+			markings="Spots";
 		else
 			markings=0
 	};
@@ -103,9 +96,9 @@ function Cat(){
 	}
 	this.fixCat = function(fixedBoolean){
 		if(fixedBoolean==false)
-			isFixed="not fixed";
+			isFixed="Not Fixed";
 		else
-			isFixed="fixed";
+			isFixed="Fixed";
 	};
 
 	this.checkIfFixed = function(){
@@ -116,15 +109,15 @@ function Cat(){
 		//green - 0 , gray - 1, blue - 2, yellow -3
 		//eyecolor = anEyeColor;
 		if(anEyeColor==0)
-			eyecolor="green";
+			eyecolor="Green";
 		else if(anEyeColor==1)
-			eyecolor="gray";
+			eyecolor="Gray";
 		else if(anEyeColor==2)
-			eyecolor="blue";
+			eyecolor="Blue";
 		else if(anEyeColor==3)
-			eyecolor="yellow";
+			eyecolor="Yellow";
 		else
-			eyecolor=0;
+			eyecolor="Green";
 	};
 
 	this.getEyeColor = function(){
@@ -133,24 +126,24 @@ function Cat(){
 
 	this.setAge = function(anAge){
 		 if(anAge <= 2){
-		 	age = "kitten"
+		 	age = "Kitten"
 		 }else if(anAge <=7){
-		 	age = "young adult"
+		 	age = "Young Adult"
 		 }else{
-		 	age = "adult"
+		 	age = "Adult"
 		 }
 	};
 	
 	this.getAgeRange = function(){
 		
 		if(age<2){
-			ageRange = "kitten";
+			ageRange = "Kitten";
 		}
 		else if(age >=2 && age<7){
-			ageRange ="young adult";
+			ageRange ="Young Adult";
 		}
 		else{
-			ageRange = "adult";
+			ageRange = "Adult";
 		}
 		return ageRange;
 	}
@@ -163,13 +156,13 @@ function Cat(){
 		//short - 0, long - 1, none 2
 		//hairlength = aHairlength;
 		if(aHairlength==0)
-			hairlength="short";
+			hairlength="Short";
 		else if(aHairlength==1)
-			hairlength="long";
+			hairlength="Long";
 		else if(aHairlength==2)
-			hairlength="none";
+			hairlength="None";
 		else
-			hairlength=0;
+			hairlength="Short";
 	}
 
 	this.getHairLength = function(){
@@ -200,6 +193,7 @@ function Cat(){
 			color : color,
 			markings : markings,
 			fixed : isFixed,
+			sex : isMale,
 			eyecolor : eyecolor,
 			age : age,
 			hairlength: hairlength,
@@ -232,14 +226,14 @@ function Cat(){
 
 	this.displayCat = function(){
 		var aCat = this.catJson();
-		var html = "<div id='" + aCat.name + "Display' class='catDisplay'><img src='" + aCat.img + "'></img>Name: "+aCat.name+" <br/>Breed: " +aCat.breed+"<br/>Color: "+aCat.color+"<br/>Sex: "+aCat.sex+"<br/>Fixed: "+aCat.isFixed+"<br/>Eyecolor: "+aCat.eyecolor+"<br/>Age:"+aCat.age+"<br/>Markings: " + aCat.markings+"</div>";
+		var html = "<div id='" + aCat.name + "Display' class='catDisplay'><img src='" + aCat.img + "'></img></div><div id='catAttributes'> Name: "+aCat.name+" <br/>Breed: " +aCat.breed+"<br/>Color: "+aCat.color+"<br/>Sex: "+aCat.sex+"<br/>Fixed: "+aCat.fixed+"<br/>Eyecolor: "+aCat.eyecolor+"<br/>Age: "+aCat.age+"<br/>Hairlength: " + aCat.hairlength+"</div>";
 		//var html = "<div id='" + name + "Display' class='catDisplay'><img src='" + img + "'></img>Name: "+name+" <br/>Breed: " +breed+"<br/>Color: "+color+"<br/>Sex: "+isMale+"<br/>Fixed: "+isFixed+"<br/>Eyecolor: "+eyecolor+"<br/>Age:"+age+"<br/>Hairlength: " + hairlength+"</div>"
 		//$("rightTop").html(html);
 		return html;
 	}
 
 	this.displayClickedCat = function(aCat){
-		var html = "<div id='" + aCat.name + "Display' class='catDisplay'><img src='" + aCat.img + "'></img>Name: "+aCat.name+" <br/>Breed: " +aCat.breed+"<br/>Color: "+aCat.color+"<br/>Sex: "+aCat.sex+"<br/>Fixed: "+aCat.isFixed+"<br/>Eyecolor: "+aCat.eyecolor+"<br/>Age:"+aCat.age+"<br/>Hairlength: " + aCat.hairlength+"</div>";
+		var html = "<div id='" + aCat.name + "Display' class='catDisplay'><img src='" + aCat.img + "'></img></div><div id='catAttributes' Name: "+aCat.name+" <br/>Breed: " +aCat.breed+"<br/>Color: "+aCat.color+"<br/>Sex: "+aCat.sex+"<br/>Fixed: "+aCat.fixed+"<br/>Eyecolor: "+aCat.eyecolor+"<br/>Age:"+aCat.age+"<br/>Hairlength: " + aCat.hairlength+"</div>";
 		$("rightTop").html(html);
 		return html;
 	}
@@ -443,7 +437,7 @@ function createCatDB(){
 	cats[16].setName("William");
 
 	cats[17] = new Cat();
-	cats[17].setColor(1);
+	cats[17].setColor(2);
 	cats[17].setBreed(0);
 	cats[17].setMale(true);
 	cats[17].setMarkings(0);
