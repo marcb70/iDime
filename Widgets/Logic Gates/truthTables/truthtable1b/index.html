@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <!--references relevant style sheets-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.css">
+    <!--references needed javascript files and jQuery libraries.-->
+    <script src="kinetic-v4.3.3.min.js"></script>
+    <script src="functions.js"></script>
+    <script src="objects.js"></script>
+    <script src="events.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src = "../../../bootstrap/js/bootstrap.js"></script>
+  </head>
+  <body>
+    <!--Button creates and calls modal-->
+   <a class = "btn btn-large btn-success" href = "#containerMain" role="button" aria-labelledby= "header" data-toggle="modal">Try it out!</a>
+  <!--Modal created from twitter bootstrap library. Fore more information and documentation visit http://twitter.github.io/bootstrap/javascript.html or main twitter bootstrap website.-->
+    <div id = "containerMain" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <!-- -->
+      <div id="directions" class = "modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3 id="header">P and Q have been filled in for you. Now, build the truth table for this statement: </h3>
+      <!--This compound proposition example was taken from "Discrete Matematics and Its Applications", Fifth Edition by Kenneth H. Rosen published by McGraw Hill. It is taken from section 1.1, exercise #23, letter e).-->
+        <h4>(P -> Q) <--> (~Q -> ~P)</h4>
+      </div>
+      <!--The main modal body contains only the exercise.-->
+      <div id="container" class = "modal-body"></div>
+
+      <div id = "buttonDiv" class="modal-footer">
+       <!--creates a two radio buttons to check user's knowledge of the difference between a Tautology and a Contradiction. User should check 'Tautology'-->
+        <a>Is this statement a Contradiction or Tautology?</a><br />
+         <input type="radio" name = "taut" value="c">Contradiction
+         <input type="radio" name = "taut" value="t">Tautology
+         <!--This button allows the user to close the modal and return to reading the material. Work will not be saved.-->
+         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <!--This button checks the user's work. Calls "updateTable" function and "checkRadio" function. updateTable() is found in functions.js. checkRadio() is found in the script tag below -->
+        <input type = "submit" class="btn btn-primary" value = "check it!" id = "submit" onclick = "checkRadio(); updateTable();" />
+      </div>
+    
+    </div>
+    <script>
+    //function checks to see if the selected radio button in the footer of the modal is correct. If the user has checked 'no' it will remind the user of what the defininition of a Tautology is.
+    function checkRadio (){
+      var radios = document.getElementsByName('taut');
+
+      for (var i = 0, length = radios.length; i < length; i++) {
+          if (radios[i].checked&&radios[i].value=='c') {
+              alert("Remember, a Contradiction is a compound proposition that is always false.");
+          }
+      }
+  }
+  //creates canvas we'll be working with using dimensions to fit the exercise.
+      var stage = new Kinetic.Stage({
+        container: 'container',
+        width: 450,
+        height: 250
+      });
+      //creates layer to draw each element.
+      var tableShapes = new Kinetic.Layer();
+     
+      //adds each element to the layer
+      tableShapes.add(truthTable); //main rectangle of table
+      //table column lines
+      tableShapes.add(column1);
+      tableShapes.add(column2);
+      tableShapes.add(column3);
+      tableShapes.add(column4);
+      tableShapes.add(column5);
+      tableShapes.add(column6);
+      tableShapes.add(topLine);
+      //table row loines
+      tableShapes.add(row1);
+      tableShapes.add(row2);
+      tableShapes.add(row3);
+      //circles within table
+      tableShapes.add(circle1x1);
+      tableShapes.add(circle1x2);
+      tableShapes.add(circle1x3);
+      tableShapes.add(circle1x4);
+      tableShapes.add(circle2x1);
+      tableShapes.add(circle2x2);
+      tableShapes.add(circle2x3);
+      tableShapes.add(circle2x4);
+      tableShapes.add(circle3x1);
+      tableShapes.add(circle3x2);
+      tableShapes.add(circle3x3);
+      tableShapes.add(circle3x4);
+      tableShapes.add(circle4x1);
+      tableShapes.add(circle4x2);
+      tableShapes.add(circle4x3);
+      tableShapes.add(circle4x4);
+      tableShapes.add(circle5x1);
+      tableShapes.add(circle5x2);
+      tableShapes.add(circle5x3);
+      tableShapes.add(circle5x4);      
+      tableShapes.add(circle6x1);
+      tableShapes.add(circle6x2);
+      tableShapes.add(circle6x3);
+      tableShapes.add(circle6x4);      
+      tableShapes.add(circle7x1);
+      tableShapes.add(circle7x2);
+      tableShapes.add(circle7x3);
+      tableShapes.add(circle7x4);
+      //text and statements      
+      tableShapes.add(tableP);
+      tableShapes.add(tableQ);
+      tableShapes.add(NOTP);
+      tableShapes.add(NOTQ);
+      tableShapes.add(PimpliesQ);
+      tableShapes.add(NotQimpliesNotP);
+      tableShapes.add(fullStatement);
+      //adds layer to the stage. The layer must be added to the stage last to insure all elements are added.
+      stage.add(tableShapes);
+
+      </script>
+  </body>
+</html>

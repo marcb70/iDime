@@ -1,71 +1,60 @@
 <!DOCTYPE HTML>
 <html>
   <head>
+    <!--references relevant style sheets-->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.css">
+    <!--references needed javascript files and jQuery libraries.-->
     <script src="kinetic-v4.3.3.min.js"></script>
     <script src="functions.js"></script>
     <script src="objects.js"></script>
     <script src="events.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src = "../../../bootstrap/js/bootstrap.js"></script>
   </head>
   <body>
-    <div id = "buttonDiv"><input type = "submit" value = "check it!" id = "submit" onclick = "updateTable();" /></div>
-    <div id="container"></div>
+    <!--Button creates and calls modal-->
+   <a class = "btn btn-large btn-success" href = "#containerMain" role="button" aria-labelledby= "header" data-toggle="modal">Try it out!</a>
+  <!--Modal created from twitter bootstrap library. Fore more information and documentation visit http://twitter.github.io/bootstrap/javascript.html or main twitter bootstrap website.-->
+    <div id = "containerMain" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <!-- -->
+      <div id="directions" class = "modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3 id="header">Build the truth table for the AND operator: </h3>
+        <h4>P * Q</h4>
+      </div>
+      <!--The main modal body contains only the exercise.-->
+      <div id="container" class = "modal-body"></div>
+
+      <div id = "buttonDiv" class="modal-footer">
+         <!--This button allows the user to close the modal and return to reading the material. Work will not be saved.-->
+         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <!--This button checks the user's work. Calls "updateTable" function. updateTable() is found in functions.js. -->
+        <input type = "submit" class="btn btn-primary" value = "check it!" id = "submit" onclick = "updateTable();" />
+      </div>
+    
+    </div>
     <script>
-  //creates canvas we'll be working with (using 90% dimensions)
-      var textStage = new Kinetic.Stage({
-        container: 'buttonDiv',
-        width: 600,
-        height: 100
-      });
-      var textLayer = new Kinetic.Layer();
-      
-      var guideText = new Kinetic.Text({
-          x: 0,
-          y: 0,
-          text: 'Build the truth table for the AND statement: ',
-          fontSize: 20,
-          fontFamily: 'Calibri',
-          fill: 'black',
-          padding: 20
-        });
-
-        var statementText = new Kinetic.Text({
-          x: 50,
-          y: 70,
-          text: 'P * Q',
-          fontSize: 18,
-          fontFamily: 'Calibri',
-          fill: 'red',
-          padding: 10
-        });      
-
-      textLayer.add(statementText);
-      textLayer.add(guideText);
-      textStage.add(textLayer);
-
+     //creates canvas we'll be working with using dimensions to fit the exercise.
       var stage = new Kinetic.Stage({
         container: 'container',
-        width: 600,
-        height: 600
+        width: 250,
+        height: 250
       });
-      var layer = new Kinetic.Layer();
-
-
-
+      //creates layer to draw each element.
       var tableShapes = new Kinetic.Layer();
-
-
-      
-      tableShapes.add(truthTable);
-      /*tableShapes.add(rightLine);
-      tableShapes.add(leftLine);
-      tableShapes.add(bottomLine);*/
+      //adds each element to the layer
+     
+      tableShapes.add(truthTable); //main rectangle of table
+      //table column lines
       tableShapes.add(column1);
       tableShapes.add(column2);
       tableShapes.add(topLine);
+      //table row lines
       tableShapes.add(row1);
       tableShapes.add(row2);
       tableShapes.add(row3);
+      //each circle in the table
       tableShapes.add(circle1x1);
       tableShapes.add(circle1x2);
       tableShapes.add(circle1x3);
@@ -78,11 +67,12 @@
       tableShapes.add(circle3x2);
       tableShapes.add(circle3x3);
       tableShapes.add(circle3x4);
+      //text and statements      
       tableShapes.add(tableP);
       tableShapes.add(tableQ);
       tableShapes.add(PANDQ);
+      //adds layer to the stage. The layer must be added to the stage last to insure all elements are added.
       stage.add(tableShapes);
-      stage.add(layer);
 
       </script>
   </body>

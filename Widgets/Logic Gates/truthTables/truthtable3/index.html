@@ -1,68 +1,80 @@
 <!DOCTYPE HTML>
 <html>
   <head>
+   <!--references relevant style sheets-->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.css">
+    <!--references needed javascript files and jQuery libraries.-->
     <script src="kinetic-v4.3.3.min.js"></script>
     <script src="functions.js"></script>
     <script src="objects.js"></script>
     <script src="events.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src = "../../../bootstrap/js/bootstrap.js"></script>
   </head>
   <body>
-    <div id = "buttonDiv"><input type = "submit" value = "check it!" id = "submit" onclick = "updateTable();" /></div>
-    <div id="container"></div>
+
+        <p class = "lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. </p>
+
+        <p class = "lorem">Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. </p>
+
+        <p class = "lorem">Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. </p>
+
+        <p class = "lorem">Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. </p>
+    
+   <!--Button creates and calls modal-->
+   <a class = "btn btn-large btn-success" href = "#containerMain" role="button" aria-labelledby= "header" data-toggle="modal">Try it out!</a>
+  <!--Modal created from twitter bootstrap library. Fore more information and documentation visit http://twitter.github.io/bootstrap/javascript.html or main twitter bootstrap website.-->
+    <div id = "containerMain" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <!-- -->
+      <div id="directions" class = "modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3 id="header">P, Q, R and S have been filled in for you. Now, build the truth table for this statement: </h3>
+        <h4>(P -> Q) <--> (R + S)</h4>
+      </div>
+      <!--The main modal body contains only the exercise.-->
+      <div id="container" class = "modal-body"></div>
+
+      <div id = "buttonDiv" class="modal-footer">
+         <!--This button allows the user to close the modal and return to reading the material. Work will not be saved.-->
+         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <!--This button checks the user's work. Calls "updateTable" function. updateTable() is found in functions.js. -->
+        <input type = "submit" class="btn btn-primary" value = "check it!" id = "submit" onclick = "updateTable();" />
+      <!--This button gives the user a hint Calls "hint" function. -->
+        <input type = "submit" class="btn btn-danger" value = "Give me a Hint!" id = "hintme" onclick = "hint();" />
+      </div>
+    
+    </div>
     <script>
-  //creates canvas we'll be working with (using 90% dimensions)
-      var textStage = new Kinetic.Stage({
-        container: 'buttonDiv',
-        width: 600,
-        height: 100
-      });
-      var textLayer = new Kinetic.Layer();
+    function hint(){
+      alert("If you're having a tough time separating the letter (P, Q or R) columns, click on the letter (P, Q, or R) for better visibility. Click again to get the colors back.")
+    }
       
-      var guideText = new Kinetic.Text({
-          x: 0,
-          y: 0,
-          text: 'P and Q have been filled in for you. \nNow, build the truth table for this statement: ',
-          fontSize: 20,
-          fontFamily: 'Calibri',
-          fill: 'black',
-          padding: 20
-        });
-
-        var statementText = new Kinetic.Text({
-          x: 50,
-          y: 70,
-          text: '(P -> Q) <--> (R + S)',
-          fontSize: 18,
-          fontFamily: 'Calibri',
-          fill: 'red',
-          padding: 10
-        });      
-
-      textLayer.add(statementText);
-      textLayer.add(guideText);
-      textStage.add(textLayer);
-
+    //creates canvas we'll be working with using dimensions to fit the exercise.
       var stage = new Kinetic.Stage({
         container: 'container',
         width: 800,
         height: 800
       });
-      var layer = new Kinetic.Layer();
-
-
-
+      //creates layer to draw each element.
       var tableShapes = new Kinetic.Layer();
+      //adds each element to the layer
 
-
-      
-      tableShapes.add(truthTable);
+      //creates kinetic groups for the first three columns which allow the user to click on the text above the group (P, Q or R) and clear that column for better visibility and interactivity.
+      var col1 = new Kinetic.Group();
+      var col2 = new Kinetic.Group();
+      var col3 = new Kinetic.Group();
+      var col4 = new Kinetic.Group();
+     
+      tableShapes.add(truthTable); //main rectangle of table
+      //table column lines
       tableShapes.add(column1);
       tableShapes.add(column2);
       tableShapes.add(column3);
       tableShapes.add(column4);
       tableShapes.add(column5);
       tableShapes.add(column6);
+      //table row lines
       tableShapes.add(topLine);
       tableShapes.add(row1);
       tableShapes.add(row2);
@@ -79,6 +91,7 @@
       tableShapes.add(row13);
       tableShapes.add(row14);
       tableShapes.add(row15);
+      //circles within table
       tableShapes.add(circle1x1);
       tableShapes.add(circle1x2);
       tableShapes.add(circle1x3);
@@ -190,7 +203,73 @@
       tableShapes.add(circle7x13);
       tableShapes.add(circle7x14);
       tableShapes.add(circle7x15);
-      tableShapes.add(circle7x16);      
+      tableShapes.add(circle7x16);
+      //adds shapes to correct groups
+      col1.add(circle1x1);
+      col1.add(circle1x2);
+      col1.add(circle1x3);
+      col1.add(circle1x4);
+      col1.add(circle1x5);
+      col1.add(circle1x6);
+      col1.add(circle1x7);
+      col1.add(circle1x8);
+      col1.add(circle1x9);
+      col1.add(circle1x10);
+      col1.add(circle1x11);
+      col1.add(circle1x12);
+      col1.add(circle1x13);
+      col1.add(circle1x14);
+      col1.add(circle1x15);
+      col1.add(circle1x16);
+      col2.add(circle2x1);
+      col2.add(circle2x2);
+      col2.add(circle2x3);
+      col2.add(circle2x4);
+      col2.add(circle2x5);
+      col2.add(circle2x6);
+      col2.add(circle2x7);
+      col2.add(circle2x8);
+      col2.add(circle2x9);
+      col2.add(circle2x10);
+      col2.add(circle2x11);
+      col2.add(circle2x12);
+      col2.add(circle2x13);
+      col2.add(circle2x14);
+      col2.add(circle2x15);
+      col2.add(circle2x16);
+      col3.add(circle3x1);
+      col3.add(circle3x2);
+      col3.add(circle3x3);
+      col3.add(circle3x4);
+      col3.add(circle3x5);
+      col3.add(circle3x6);
+      col3.add(circle3x7);
+      col3.add(circle3x8); 
+      col3.add(circle3x9); 
+      col3.add(circle3x10); 
+      col3.add(circle3x11); 
+      col3.add(circle3x12); 
+      col3.add(circle3x13); 
+      col3.add(circle3x14); 
+      col3.add(circle3x15); 
+      col3.add(circle3x16);
+      col4.add(circle4x1); 
+      col4.add(circle4x2); 
+      col4.add(circle4x3); 
+      col4.add(circle4x4); 
+      col4.add(circle4x5); 
+      col4.add(circle4x6); 
+      col4.add(circle4x7); 
+      col4.add(circle4x8); 
+      col4.add(circle4x9); 
+      col4.add(circle4x10); 
+      col4.add(circle4x11); 
+      col4.add(circle4x12); 
+      col4.add(circle4x13); 
+      col4.add(circle4x14); 
+      col4.add(circle4x15); 
+      col4.add(circle4x16); 
+      //text and statements     
       tableShapes.add(tableP);
       tableShapes.add(tableQ);
       tableShapes.add(tableR);
@@ -198,8 +277,13 @@
       tableShapes.add(PimpliesQ);
       tableShapes.add(RorS);
       tableShapes.add(fullStatement);
+      //adds group to the layer.
+      tableShapes.add(col1);
+      tableShapes.add(col2);
+      tableShapes.add(col3);
+      tableShapes.add(col4);
+      //adds layer to the stage. The layer must be added to the stage last to insure all elements are added.
       stage.add(tableShapes);
-      stage.add(layer);
 
       </script>
   </body>

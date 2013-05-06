@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <head>
+    <!--references relevant style sheets-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.css">
+    <!--references needed javascript files and jQuery libraries.-->
+    <script src="kinetic-v4.3.3.min.js"></script>
+    <script src="functions.js"></script>
+    <script src="objects.js"></script>
+    <script src="events.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src = "../../../bootstrap/js/bootstrap.js"></script>
+  </head>
+  <body>
+    <!--Button creates and calls modal-->
+   <a class = "btn btn-large btn-success" href = "#containerMain" role="button" aria-labelledby= "header" data-toggle="modal">Try it out!</a>
+  <!--Modal created from twitter bootstrap library. Fore more information and documentation visit http://twitter.github.io/bootstrap/javascript.html or main twitter bootstrap website.-->
+    <div id = "containerMain" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <!-- -->
+      <div id="directions" class = "modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3 id="header">P, Q and R have been filled in for you. Now, build the truth table for this statement: </h3>
+        <h4>(~P <--> ~R) <--> (P <--> Q)</h4>
+      </div>
+      <!--The main modal body contains only the exercise.-->
+      <div id="container" class = "modal-body"></div>
+
+      <div id = "buttonDiv" class="modal-footer">
+         <!--This button allows the user to close the modal and return to reading the material. Work will not be saved.-->
+         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <!--This button checks the user's work. Calls "updateTable" function. updateTable() is found in functions.js. -->
+        <input type = "submit" class="btn btn-primary" value = "check it!" id = "submit" onclick = "updateTable();" />
+        <!--This button gives the user a hint Calls "hint" function. -->
+        <input type = "submit" class="btn btn-danger" value = "Give me a Hint!" id = "hintme" onclick = "hint();" />
+      </div>
+    
+    </div>
+    <script>
+    function hint(){
+      alert("If you're having a tough time separating the letter (P, Q or R) columns, click on the letter (P, Q, or R) for better visibility. Click again to get the colors back.")
+    }
+  //creates canvas we'll be working with using dimensions which fit the exercise.
+      var stage = new Kinetic.Stage({
+        container: 'container',
+        width: 450,
+        height: 400
+      });
+      //creates layer to draw each element.
+      var tableShapes = new Kinetic.Layer();
+      
+      //creates kinetic groups for the first three columns which allow the user to click on the text above the group (P, Q or R) and clear that column for better visibility and interactivity.
+      var col1 = new Kinetic.Group();
+      var col2 = new Kinetic.Group();
+      var col3 = new Kinetic.Group();
+     
+      //adds each element to the layer
+      tableShapes.add(truthTable); //main rectangle of table
+      //table column lines
+      tableShapes.add(column1);
+      tableShapes.add(column2);
+      tableShapes.add(column3);
+      tableShapes.add(column4);
+      tableShapes.add(column5);
+      tableShapes.add(topLine);
+      //table row loines
+      tableShapes.add(row1);
+      tableShapes.add(row2);
+      tableShapes.add(row3);
+      tableShapes.add(row4);
+      tableShapes.add(row5);
+      tableShapes.add(row6);
+      tableShapes.add(row7);
+      //circles within table
+      tableShapes.add(circle1x1);
+      tableShapes.add(circle1x2);
+      tableShapes.add(circle1x3);
+      tableShapes.add(circle1x4);
+      tableShapes.add(circle1x5);
+      tableShapes.add(circle1x6);
+      tableShapes.add(circle1x7);
+      tableShapes.add(circle1x8);
+      tableShapes.add(circle2x1);
+      tableShapes.add(circle2x2);
+      tableShapes.add(circle2x3);
+      tableShapes.add(circle2x4);
+      tableShapes.add(circle2x5);
+      tableShapes.add(circle2x6);
+      tableShapes.add(circle2x7);
+      tableShapes.add(circle2x8);
+      tableShapes.add(circle3x1);
+      tableShapes.add(circle3x2);
+      tableShapes.add(circle3x3);
+      tableShapes.add(circle3x4);
+      tableShapes.add(circle3x5);
+      tableShapes.add(circle3x6);
+      tableShapes.add(circle3x7);
+      tableShapes.add(circle3x8);
+      tableShapes.add(circle4x1);
+      tableShapes.add(circle4x2);
+      tableShapes.add(circle4x3);
+      tableShapes.add(circle4x4);
+      tableShapes.add(circle4x5);
+      tableShapes.add(circle4x6);
+      tableShapes.add(circle4x7);
+      tableShapes.add(circle4x8);
+      tableShapes.add(circle5x1);
+      tableShapes.add(circle5x2);
+      tableShapes.add(circle5x3);
+      tableShapes.add(circle5x4);      
+      tableShapes.add(circle5x5);      
+      tableShapes.add(circle5x6);      
+      tableShapes.add(circle5x7);      
+      tableShapes.add(circle5x8);      
+      tableShapes.add(circle6x1);
+      tableShapes.add(circle6x2);
+      tableShapes.add(circle6x3);
+      tableShapes.add(circle6x4);      
+      tableShapes.add(circle6x5);      
+      tableShapes.add(circle6x6);      
+      tableShapes.add(circle6x7);      
+      tableShapes.add(circle6x8);
+      col1.add(circle1x1);
+      col1.add(circle1x2);
+      col1.add(circle1x3);
+      col1.add(circle1x4);
+      col1.add(circle1x5);
+      col1.add(circle1x6);
+      col1.add(circle1x7);
+      col1.add(circle1x8);
+      col2.add(circle2x1);
+      col2.add(circle2x2);
+      col2.add(circle2x3);
+      col2.add(circle2x4);
+      col2.add(circle2x5);
+      col2.add(circle2x6);
+      col2.add(circle2x7);
+      col2.add(circle2x8);
+      col3.add(circle3x1);
+      col3.add(circle3x2);
+      col3.add(circle3x3);
+      col3.add(circle3x4);
+      col3.add(circle3x5);
+      col3.add(circle3x6);
+      col3.add(circle3x7);
+      col3.add(circle3x8);
+      //text and statements      
+      tableShapes.add(tableP);
+      tableShapes.add(tableQ);
+      tableShapes.add(tableR);
+      tableShapes.add(PbiconR);
+      tableShapes.add(PbiconQ);
+      tableShapes.add(fullStatement);
+
+      //adds group to the layer.
+      tableShapes.add(col1);
+      tableShapes.add(col2);
+      tableShapes.add(col3);
+      //adds layer to the stage. The layer must be added to the stage last to insure all elements are added.
+      
+      stage.add(tableShapes);
+
+      </script>
+  </body>
+</html>

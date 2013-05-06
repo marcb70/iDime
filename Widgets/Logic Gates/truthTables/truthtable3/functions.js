@@ -1,8 +1,10 @@
+//arrays created for error and size checking
 var circleArray = new Array();
 var circle7Array = new Array();
 var circle5Array = new Array();
 var circle6Array = new Array();
 
+//code taken from internet. boolean function that checks to see if an array contains a certain element. 
 Array.prototype.contains = function(obj) {
     var i = this.length;
     while (i--) {
@@ -12,7 +14,89 @@ Array.prototype.contains = function(obj) {
     }
     return false;
 }
-
+/*this function clears a specified column. If the user clicks on a letter column (P, Q, R or S), that column is turned white, enabling the user to more clearly 
+see the other columns. If the user clicks again, the column returns to its previous pre-ordered colors.*/
+function clearColumn(object){
+	//console.log(object);
+	//if user clicks on the P column
+	if(object=="c1"){
+		var c1 = col1.getChildren();//get each circle in the first column group
+		for (var i = 0; i < c1.length; i++) {
+				if(c1[i].getFill()==""){//check if column is already white. if it is, change colors back to original.
+					if(c1[i].getId()=="1x1"||c1[i].getId()=="1x2"||c1[i].getId()=="1x3"||c1[i].getId()=="1x4"||c1[i].getId()=="1x5"||c1[i].getId()=="1x6"||c1[i].getId()=="1x7"||c1[i].getId()=="1x8"){
+						c1[i].setFill("green");
+					}
+					else{
+						c1[i].setFill("red");
+					}
+				}
+				else{//if the column is not already white, make it white.
+					c1[i].setFill("");
+				}
+				
+			}	
+	}
+	else if(object=="c2")//if user clicks on the Q column
+	{
+		var c1 = col2.getChildren();//get each circle in the second column group
+		for (var i = 0; i < c1.length; i++) {
+				if(c1[i].getFill()==""){//check if column is already white. if it is, change colors back to original.
+					if(c1[i].getId()=="2x1"||c1[i].getId()=="2x2"||c1[i].getId()=="2x3"||c1[i].getId()=="2x4"||c1[i].getId()=="2x9"||c1[i].getId()=="2x10"||c1[i].getId()=="2x11"||c1[i].getId()=="2x12"){
+						c1[i].setFill("green");
+					}
+					else{
+						c1[i].setFill("red");
+					}
+				}
+				else{//if the column is not already white, make it white.
+					c1[i].setFill("");
+				}
+				
+			}	
+	}
+	else if(object=="c3") //if user clicks on the R column
+	{
+		var c1 = col3.getChildren();//get each circle in the third column group
+		for (var i = 0; i < c1.length; i++) {
+				if(c1[i].getFill()=="")//check if column is already white. if it is, change colors back to original.
+				{
+					if(c1[i].getId()=="3x1"||c1[i].getId()=="3x2"||c1[i].getId()=="3x5"||c1[i].getId()=="3x6"||c1[i].getId()=="3x9"||c1[i].getId()=="3x10"||c1[i].getId()=="3x13"||c1[i].getId()=="3x14"){
+						c1[i].setFill("green");
+					}
+					else{
+						c1[i].setFill("red");
+					}
+				}
+				else{//if the column is not already white, make it white.
+					c1[i].setFill("");
+				}
+				
+			}	
+	}
+	else if(object=="c4") //if user clicks on the S column
+	{
+		var c1 = col4.getChildren();//get each circle in the third column group
+		for (var i = 0; i < c1.length; i++) {
+				if(c1[i].getFill()=="")//check if column is already white. if it is, change colors back to original.
+				{
+					if(c1[i].getId()=="4x1"||c1[i].getId()=="4x3"||c1[i].getId()=="4x5"||c1[i].getId()=="4x7"||c1[i].getId()=="4x9"||c1[i].getId()=="4x11"||c1[i].getId()=="4x13"||c1[i].getId()=="4x15"){
+						c1[i].setFill("green");
+					}
+					else{
+						c1[i].setFill("red");
+					}
+				}
+				else{//if the column is not already white, make it white.
+					c1[i].setFill("");
+				}
+				
+			}	
+	}
+	//draw the layer to change the colors.
+	tableShapes.draw();
+}
+/*when an object is clicked or tapped, this function changes the color of the circle based upon the color it was when tapped. This function then calls
+addToArray to add the object to its corresponding array and draws the layer to ensure color change.*/
 function setColor(object)
 {
 	var color = object.getFill();
@@ -64,9 +148,14 @@ function addToArray(object){
 	
 }
 
+/*each for loop in the function checks a specific row for errors in the truth table. Each array is checked for correct length to make sure
+there are no uncolored or missing circles and that the truth table is complete.*/
 function updateTable()
 {
+	 //array to add all english error alerts. When user clicks "check it" button, if there are errors the for loop below will output each string so the user knows what is wrong.
 	var errorString = new Array();
+	
+	 //variable to record the number of errors. if the variable is zero, the user has completed the table correctly. If the variable is greater than zero, there are erros the user must correct.
 	var errors = 0;
 
 	if(circleArray.length<48){
@@ -118,7 +207,7 @@ function updateTable()
 		 			(object2 == "5x13" && color2 == "green")||(object2 == "5x14" && color2 == "green")
 		 			||(object2 == "5x15" && color2 == "green") ||  (object2 == "5x16" && color2=="green"))){
 
-					var temp2="The R + S column has errors.";
+					var temp2="The P -> q column has errors.";
 					if(!errorString.contains(temp2))
 					{
 						errorString.push(temp2);
@@ -144,7 +233,7 @@ function updateTable()
 		 			(object3 == "6x13" && color3 == "green")||(object3 == "6x14" && color3 == "green")
 		 			|| (object3 == "6x15" && color3 == "green") ||  (object3 == "6x16" && color3=="red"))){
 
-		 			var temp3 ="The P -> Q column has errors.";
+		 			var temp3 ="The R + S column has errors.";
 					if(!errorString.contains(temp3))
 					{
 						errorString.push(temp3);
@@ -155,11 +244,13 @@ function updateTable()
 		}
 	}
 		
+	//if there are no errors, alert the user they have completed the truth table correctly	
 	if(errors==0){
 		alert("Congrats! You completed the truth table correctly.");
 	}
 	else{
 		var tempString = "There are errors: ";
+		//check for array length, make sure the table is completed, no uncolored circles.
 		if(circle7Array.length<16||circle5Array.length<16||circle6Array.length<16||circleArray.length<48)
 		{
 			var tempString2 = "The table is incomplete. Keep going!";
@@ -169,6 +260,7 @@ function updateTable()
 			}
 		}
 
+		//for loop so there are not multuple alert boxes when the user checks.
         for(var i = 0; i < errorString.length; i++){
           tempString += "\n-" + errorString[i];
         }

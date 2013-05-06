@@ -1,3 +1,7 @@
+/*Creates all shapes, including the truth table, rows and columns for the truth table, and each cirlce in the truth table.
+*This file uses kineticJS to create each object.*/
+
+//creates the main rectable of the truth table
 var truthTable = new Kinetic.Rect({
   height: 680,
   width: 440,
@@ -7,11 +11,8 @@ var truthTable = new Kinetic.Rect({
   y: 10
 
 });
-var topLine = new Kinetic.Line({
-  points: [15, 50, 455, 50],
-  stroke: 'black',
-  strokeWidth: 4
-});
+
+//the following 6 variables create the table column lines
 var column1 = new Kinetic.Line({
   points: [55, 10, 55, 690],
   stroke: 'black',
@@ -42,6 +43,13 @@ var column6 = new Kinetic.Line({
   points: [300, 10, 300, 690],
   stroke: 'black',
   strokeWidth: 2
+});
+
+//the following 16 variables create the table row lines
+var topLine = new Kinetic.Line({
+  points: [15, 50, 455, 50],
+  stroke: 'black',
+  strokeWidth: 4
 });
 var row1 = new Kinetic.Line({
   points: [15, 90, 455, 90],
@@ -121,7 +129,9 @@ var row15 = new Kinetic.Line({
   strokeWidth: 2
 });
 
+//the following variables create all circles within the tables. 
 var circle1x1 = new Kinetic.Circle({
+  id: "1x1",
   x: 35,
   y: 70,
   radius: 15,
@@ -131,6 +141,7 @@ var circle1x1 = new Kinetic.Circle({
 });
 
 var circle1x2 = new Kinetic.Circle({
+  id: "1x2",
   x: 35,
   y: 110,
   radius: 15,
@@ -140,6 +151,7 @@ var circle1x2 = new Kinetic.Circle({
 });
 
 var circle1x3 = new Kinetic.Circle({
+  id: "1x3",
   x: 35,
   y: 150,
   radius: 15,
@@ -149,6 +161,7 @@ var circle1x3 = new Kinetic.Circle({
 });
 
 var circle1x4 = new Kinetic.Circle({
+  id: "1x4",
   x: 35,
   y: 190,
   radius: 15,
@@ -157,6 +170,7 @@ var circle1x4 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle1x5 = new Kinetic.Circle({
+  id: "1x5",
   x: 35,
   y: 230,
   radius: 15,
@@ -165,6 +179,7 @@ var circle1x5 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle1x6 = new Kinetic.Circle({
+  id: "1x6",
   x: 35,
   y: 270,
   radius: 15,
@@ -173,6 +188,7 @@ var circle1x6 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle1x7 = new Kinetic.Circle({
+  id: "1x7",
   x: 35,
   y: 310,
   radius: 15,
@@ -181,6 +197,7 @@ var circle1x7 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle1x8 = new Kinetic.Circle({
+  id: "1x8",
   x: 35,
   y: 350,
   radius: 15,
@@ -189,6 +206,7 @@ var circle1x8 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle1x9 = new Kinetic.Circle({
+  id: "1x9",
   x: 35,
   y: 390,
   radius: 15,
@@ -197,6 +215,7 @@ var circle1x9 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle1x10 = new Kinetic.Circle({
+  id: "1x10",
   x: 35,
   y: 430,
   radius: 15,
@@ -205,6 +224,7 @@ var circle1x10 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle1x11 = new Kinetic.Circle({
+  id: "1x11",
   x: 35,
   y: 470,
   radius: 15,
@@ -214,6 +234,7 @@ var circle1x11 = new Kinetic.Circle({
 });
 
 var circle1x12 = new Kinetic.Circle({
+  id: "1x12",
   x: 35,
   y: 510,
   radius: 15,
@@ -222,6 +243,7 @@ var circle1x12 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle1x13 = new Kinetic.Circle({
+  id: "1x13",
   x: 35,
   y: 550,
   radius: 15,
@@ -230,6 +252,7 @@ var circle1x13 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle1x14 = new Kinetic.Circle({
+  id: "1x14",
   x: 35,
   y: 590,
   radius: 15,
@@ -238,6 +261,7 @@ var circle1x14 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle1x15 = new Kinetic.Circle({
+  id: "1x15",
   x: 35,
   y: 630,
   radius: 15,
@@ -246,6 +270,7 @@ var circle1x15 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle1x16 = new Kinetic.Circle({
+  id: "1x16",
   x: 35,
   y: 670,
   radius: 15,
@@ -255,6 +280,7 @@ var circle1x16 = new Kinetic.Circle({
 });
 
 var circle2x1 = new Kinetic.Circle({
+  id: "2x1",
   x: 75,
   y: 70,
   radius: 15,
@@ -264,6 +290,7 @@ var circle2x1 = new Kinetic.Circle({
 });
 
 var circle2x2 = new Kinetic.Circle({
+  id: "2x2",
   x: 75,
   y: 110,
   radius: 15,
@@ -273,6 +300,7 @@ var circle2x2 = new Kinetic.Circle({
 });
 
 var circle2x3 = new Kinetic.Circle({
+  id: "2x3",
   x: 75,
   y: 150,
   radius: 15,
@@ -282,6 +310,7 @@ var circle2x3 = new Kinetic.Circle({
 });
 
 var circle2x4 = new Kinetic.Circle({
+  id: "2x4",
   x: 75,
   y: 190,
   radius: 15,
@@ -290,6 +319,7 @@ var circle2x4 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle2x5 = new Kinetic.Circle({
+  id: "2x5",
   x: 75,
   y: 230,
   radius: 15,
@@ -298,6 +328,7 @@ var circle2x5 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle2x6 = new Kinetic.Circle({
+  id: "2x6",
   x: 75,
   y: 270,
   radius: 15,
@@ -306,6 +337,7 @@ var circle2x6 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle2x7 = new Kinetic.Circle({
+  id: "2x7",
   x: 75,
   y: 310,
   radius: 15,
@@ -314,6 +346,7 @@ var circle2x7 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle2x8 = new Kinetic.Circle({
+  id: "2x8",
   x: 75,
   y: 350,
   radius: 15,
@@ -321,7 +354,9 @@ var circle2x8 = new Kinetic.Circle({
   stroke: 'black',
   strokeWidth: 2
 });
+
 var circle2x9 = new Kinetic.Circle({
+  id: "2x9",
   x: 75,
   y: 390,
   radius: 15,
@@ -330,6 +365,7 @@ var circle2x9 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle2x10 = new Kinetic.Circle({
+  id: "2x10",
   x: 75,
   y: 430,
   radius: 15,
@@ -338,6 +374,7 @@ var circle2x10 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle2x11 = new Kinetic.Circle({
+  id: "2x10",
   x: 75,
   y: 470,
   radius: 15,
@@ -346,6 +383,7 @@ var circle2x11 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle2x12 = new Kinetic.Circle({
+  id: "2x12",
   x: 75,
   y: 510,
   radius: 15,
@@ -354,6 +392,7 @@ var circle2x12 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle2x13 = new Kinetic.Circle({
+  id: "2x13",
   x: 75,
   y: 550,
   radius: 15,
@@ -362,6 +401,7 @@ var circle2x13 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle2x14 = new Kinetic.Circle({
+  id: "2x14",
   x: 75,
   y: 590,
   radius: 15,
@@ -370,6 +410,7 @@ var circle2x14 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle2x15 = new Kinetic.Circle({
+  id: "2x15",
   x: 75,
   y: 630,
   radius: 15,
@@ -378,6 +419,7 @@ var circle2x15 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle2x16 = new Kinetic.Circle({
+  id: "2x16",
   x: 75,
   y: 670,
   radius: 15,
@@ -387,6 +429,7 @@ var circle2x16 = new Kinetic.Circle({
 });
 
 var circle3x1 = new Kinetic.Circle({
+  id: "3x1",
   x: 115,
   y: 70,
   radius: 15,
@@ -396,6 +439,7 @@ var circle3x1 = new Kinetic.Circle({
 });
 
 var circle3x2 = new Kinetic.Circle({
+  id: "3x2",
   x: 115,
   y: 110,
   radius: 15,
@@ -405,6 +449,7 @@ var circle3x2 = new Kinetic.Circle({
 });
 
 var circle3x3 = new Kinetic.Circle({
+  id: "3x3",
   x: 115,
   y: 150,
   radius: 15,
@@ -414,6 +459,7 @@ var circle3x3 = new Kinetic.Circle({
 });
 
 var circle3x4 = new Kinetic.Circle({
+  id: "3x4",
   x: 115,
   y: 190,
   radius: 15,
@@ -422,6 +468,7 @@ var circle3x4 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle3x5 = new Kinetic.Circle({
+  id: "3x5",
   x: 115,
   y: 230,
   radius: 15,
@@ -430,6 +477,7 @@ var circle3x5 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle3x6 = new Kinetic.Circle({
+  id: "3x6",
   x: 115,
   y: 270,
   radius: 15,
@@ -438,6 +486,7 @@ var circle3x6 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle3x7 = new Kinetic.Circle({
+  id: "3x7",
   x: 115,
   y: 310,
   radius: 15,
@@ -446,6 +495,7 @@ var circle3x7 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle3x8 = new Kinetic.Circle({
+  id: "3x8",
   x: 115,
   y: 350,
   radius: 15,
@@ -454,6 +504,7 @@ var circle3x8 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle3x9 = new Kinetic.Circle({
+  id: "3x9",
   x: 115,
   y: 390,
   radius: 15,
@@ -462,6 +513,7 @@ var circle3x9 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle3x10 = new Kinetic.Circle({
+  id: "3x10",
   x: 115,
   y: 430,
   radius: 15,
@@ -470,6 +522,7 @@ var circle3x10 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle3x11 = new Kinetic.Circle({
+  id: "3x11",
   x: 115,
   y: 470,
   radius: 15,
@@ -478,6 +531,7 @@ var circle3x11 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle3x12 = new Kinetic.Circle({
+  id: "3x12",
   x: 115,
   y: 510,
   radius: 15,
@@ -486,6 +540,7 @@ var circle3x12 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle3x13 = new Kinetic.Circle({
+  id: "3x13",
   x: 115,
   y: 550,
   radius: 15,
@@ -494,6 +549,7 @@ var circle3x13 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle3x14 = new Kinetic.Circle({
+  id: "3x14",
   x: 115,
   y: 590,
   radius: 15,
@@ -502,6 +558,7 @@ var circle3x14 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle3x15 = new Kinetic.Circle({
+  id: "3x15",
   x: 115,
   y: 630,
   radius: 15,
@@ -510,6 +567,7 @@ var circle3x15 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle3x16 = new Kinetic.Circle({
+  id: "3x16",
   x: 115,
   y: 670,
   radius: 15,
@@ -519,6 +577,7 @@ var circle3x16 = new Kinetic.Circle({
 });
 
 var circle4x1 = new Kinetic.Circle({
+  id: "4x1",
   x: 155,
   y: 70,
   radius: 15,
@@ -528,6 +587,7 @@ var circle4x1 = new Kinetic.Circle({
 });
 
 var circle4x2 = new Kinetic.Circle({
+  id: "4x2",
   x: 155,
   y: 110,
   radius: 15,
@@ -537,6 +597,7 @@ var circle4x2 = new Kinetic.Circle({
 });
 
 var circle4x3 = new Kinetic.Circle({
+  id: "4x3",
   x: 155,
   y: 150,
   radius: 15,
@@ -546,6 +607,7 @@ var circle4x3 = new Kinetic.Circle({
 });
 
 var circle4x4 = new Kinetic.Circle({
+  id: "4x4",
   x: 155,
   y: 190,
   radius: 15,
@@ -554,6 +616,7 @@ var circle4x4 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle4x5 = new Kinetic.Circle({
+  id: "4x5",
   x: 155,
   y: 230,
   radius: 15,
@@ -562,6 +625,7 @@ var circle4x5 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle4x6 = new Kinetic.Circle({
+  id: "4x6",
   x: 155,
   y: 270,
   radius: 15,
@@ -570,6 +634,7 @@ var circle4x6 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle4x7 = new Kinetic.Circle({
+  id: "4x7",
   x: 155,
   y: 310,
   radius: 15,
@@ -578,6 +643,7 @@ var circle4x7 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle4x8 = new Kinetic.Circle({
+  id: "4x8",
   x: 155,
   y: 350,
   radius: 15,
@@ -586,6 +652,7 @@ var circle4x8 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle4x9 = new Kinetic.Circle({
+  id: "4x9",
   x: 155,
   y: 390,
   radius: 15,
@@ -594,6 +661,7 @@ var circle4x9 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle4x10 = new Kinetic.Circle({
+  id: "4x10",
   x: 155,
   y: 430,
   radius: 15,
@@ -602,6 +670,7 @@ var circle4x10 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle4x11 = new Kinetic.Circle({
+  id: "4x11",
   x: 155,
   y: 470,
   radius: 15,
@@ -610,6 +679,7 @@ var circle4x11 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle4x12 = new Kinetic.Circle({
+  id: "4x12",
   x: 155,
   y: 510,
   radius: 15,
@@ -618,6 +688,7 @@ var circle4x12 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle4x13 = new Kinetic.Circle({
+  id: "4x13",
   x: 155,
   y: 550,
   radius: 15,
@@ -626,6 +697,7 @@ var circle4x13 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle4x14 = new Kinetic.Circle({
+  id: "4x14",
   x: 155,
   y: 590,
   radius: 15,
@@ -634,6 +706,7 @@ var circle4x14 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle4x15 = new Kinetic.Circle({
+  id: "4x15",
   x: 155,
   y: 630,
   radius: 15,
@@ -642,6 +715,7 @@ var circle4x15 = new Kinetic.Circle({
   strokeWidth: 2
 });
 var circle4x16 = new Kinetic.Circle({
+  id: "4x16",
   x: 155,
   y: 670,
   radius: 15,
@@ -1094,6 +1168,7 @@ var circle7x16 = new Kinetic.Circle({
   strokeWidth: 2
 });
 
+//the following variables create the kinetic Text statements at the top of the truth table.
 var tableR = new Kinetic.Text({
   x: 105,
   y: 15,

@@ -1,3 +1,8 @@
+/*Creates all shapes, including the truth table, rows and columns for the truth table, and each cirlce in the truth table.
+*Only circles that are changeable have id's attached to them for functional purposes. 
+*This file uses kineticJS to create each object.*/
+
+//creates the main rectable of the truth table
 var truthTable = new Kinetic.Rect({
   height: 215,
   width: 400,
@@ -7,11 +12,32 @@ var truthTable = new Kinetic.Rect({
   y: 10
 
 });
+//the following 4 variables create the table row lines
 var topLine = new Kinetic.Line({
   points: [15, 50, 415, 50],
   stroke: 'black',
   strokeWidth: 4
 });
+
+var row1 = new Kinetic.Line({
+  points: [15, 90, 415, 90],
+  stroke: 'black',
+  strokeWidth: 2
+});
+
+var row2 = new Kinetic.Line({
+  points: [15, 130, 415, 130],
+  stroke: 'black',
+  strokeWidth: 2
+});
+
+var row3 = new Kinetic.Line({
+  points: [15, 170, 415, 170],
+  stroke: 'black',
+  strokeWidth: 2
+});
+
+//the following 5 variables create the table column lines
 var column1 = new Kinetic.Line({
   points: [55, 10, 55, 215],
   stroke: 'black',
@@ -38,24 +64,8 @@ var column5 = new Kinetic.Line({
   stroke: 'black',
   strokeWidth: 2
 });
-var row1 = new Kinetic.Line({
-  points: [15, 90, 415, 90],
-  stroke: 'black',
-  strokeWidth: 2
-});
 
-var row2 = new Kinetic.Line({
-  points: [15, 130, 415, 130],
-  stroke: 'black',
-  strokeWidth: 2
-});
-
-var row3 = new Kinetic.Line({
-  points: [15, 170, 415, 170],
-  stroke: 'black',
-  strokeWidth: 2
-});
-
+//the following variables create all circles within the tables. 
 var circle1x1 = new Kinetic.Circle({
   x: 35,
   y: 70,
@@ -287,6 +297,7 @@ var circle6x4 = new Kinetic.Circle({
 });
 
 
+//the following variables create the kinetic Text statements at the top of the truth table.
 var PANDQ = new Kinetic.Text({
   x: 240,
   y: 15,
