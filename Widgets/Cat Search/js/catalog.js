@@ -1,7 +1,9 @@
-$(document).ready(function(){
-var newNum = 0;
+var newNum = 0, questionCount = 0;
 var selectedCats = new Array();
 var selectedCatList = new Array();
+var qString = "";
+var findTheseCats = [["Tigger", "Crookshanks"], ["Pokey", "Gray Wind", "Katniss"], ["Master Yi", "Skinbag", "Scruff"]];
+var selectedCatAnswer = [];
 var selectedOptions = {
     breed : [],
     color : [],
@@ -13,6 +15,17 @@ var selectedOptions = {
     hairlength: []
 }
 
+function arraysEqual(arr1, arr2) {
+    if(arr1.length !== arr2.length)
+        return false;
+    for(var i = arr1.length; i--;) {
+        if(arr1[i] !== arr2[i])
+            return false;
+    }
+
+    return true;
+}
+
 Array.prototype.contains = function(obj) {
     var i = this.length;
     while (i--) {
@@ -22,7 +35,15 @@ Array.prototype.contains = function(obj) {
     }
     return false;
 }
-
+function generateQStringtring(){
+    var aQString = ''
+    for(var i= 0; i < findTheseCats[questionCount].length; i++){
+        aQString += findTheseCats[questionCount][i] + " "
+    } 
+    $("#rightTopBottomRight").html("Find these Cats: " + aQString);
+    return aQString
+}
+    generateQStringtring();
 $('#chooseCat').click(function(){
     if($('#catListInfo').val()!=0)
     {
@@ -33,6 +54,7 @@ $('#chooseCat').click(function(){
 });
 
 $('#submit').click(function(){
+
     var catHTML="";
     var catDb = new createCatDB();
     catArray = catDb.getDB();
@@ -112,12 +134,15 @@ $('#submit').click(function(){
         });
         console.log(selectedOptions);
 
+
+
         for (var i = 0; i < catArray.length; i++) {
 
             if( (selectedOptions.age.contains(catArray[i].getAge()) || selectedOptions.age.length == 0) && (selectedOptions.breed.contains(catArray[i].getBreed()) || selectedOptions.breed.length == 0) && (selectedOptions.color.contains(catArray[i].getColor()) || selectedOptions.color.length == 0) && (selectedOptions.eyecolor.contains(catArray[i].getEyeColor()) || selectedOptions.eyecolor.length == 0) && (selectedOptions.fixed.contains(catArray[i].checkIfFixed()) || selectedOptions.fixed.length == 0) && (selectedOptions.sex.contains(catArray[i].getSex()) || selectedOptions.sex.length == 0) && (selectedOptions.hairlength.contains(catArray[i].getHairLength()) || selectedOptions.hairlength.length == 0) && (selectedOptions.markings.contains(catArray[i].getMarkings()) || selectedOptions.markings.length == 0))
             {
 
                 catArray[i].isMatch(true);
+                selectedCatAnswer.push(catArray[i].getName());
             }
 
             if(catArray[i].getMatch()){
@@ -126,6 +151,17 @@ $('#submit').click(function(){
 
             $("#selectedCatDisplay").html(catHTML);
         }
+
+        console.log("selectedOptions: " + selectedCatAnswer + " findTheseCats: " +findTheseCats[questionCount]);
+        if(arraysEqual(selectedCatAnswer,findTheseCats[questionCount])){
+            questionCount++;
+            qString = generateQStringtring()
+            if(questionCount < findTheseCats.length){
+                alert("Great Job now find these cats " + qString);
+            }else{
+                alert("Great Job you have answered all the questions");
+            }
+        }
         
         $('.catThumb').click(function(){
             for (var i = 0; i < catArray.length; i++) {
@@ -133,16 +169,75 @@ $('#submit').click(function(){
                // console.log(catArray)
                if(catArray[i].getName() == $(this).text()){
                 catHTML = catArray[i].displayCat();
+                }
+            };
+
+        $("#rightTopTop").html(catHTML);
+
+        });
+    
+    $("#rightTopTop").html("")
+    
+    var count = 0;
+    var stStart ="Boolean options:";
+    var bigStatement = "";
+        bigStatement += stStart;
+
+    for(key in selectedOptions){
+        if(selectedOptions[key].length == 0){
+            delete selectedOptions[key]
+        }
+    }
+    for(key in selectedOptions) {
+        if(selectedOptions.hasOwnProperty(key)) {
+            count++;
+        }
+    }
+    var m = 0;
+    for(key in selectedOptions){
+        var attrName = key;
+        var attrValue = selectedOptions[key];
+        
+        var statement =" \( " + key +": ";
+        console.log(key + " and " + selectedOptions)
+        m++;
+
+       // if(attrValue.length == 0){
+
+      //  }else{
+        
+            for(var i = 0; i < attrValue.length; i++){
+                
+                
+                    if(attrValue[i] && i < attrValue.length - 1){
+                        console.log(attrValue[i]);
+                        statement = statement + attrValue[i] + " OR ";
+                    }else if(attrValue[i] && i == attrValue.length - 1){
+                        statement = statement + attrValue[i];
+                    }
+                
+
             }
-        };
+            console.log("length :" + count);
+            if(m == count){
+                statement = statement + " \)";
+                bigStatement = bigStatement + statement;
 
-        $("#rightTop").html(catHTML);
+            }else{
 
-    });
+                statement = statement + " \) AND ";
+                bigStatement = bigStatement + statement;
+            }
+        //}
+    }
 
-        $("#rightTop").html("")
-    });
+    console.log(bigStatement);
+    $("#rightTopBottomLeft").html(bigStatement);
+});
 
+$("#startOver").click(function(){
+    window.location.reload()
+})
 $('.catThumb').click(function(){
     var catHTML="";
     var catDb = new createCatDB();
@@ -166,7 +261,7 @@ $('.catThumb').click(function(){
             }
         };
 
-        $("#rightTop").html(catHTML);
+        $("#rightTopTop").html(catHTML);
 
     });
 
@@ -186,6 +281,7 @@ $('#addC').click(function() {
        $('#eyeDiv').css('display', 'block');
        $('#eye1').css('display', 'block');
        $('.clonedEyeInput').css('display', 'block');
+       console.log("newNum: " + $('.clonedColorInput').length);
    }
    else if (val == "d") {
        $('#hairDiv').css('display', 'block');
@@ -343,6 +439,7 @@ $('#ecAdd').click(function () {
 $('#ecDel').click(function () {
         var num = $('.clonedEyeInput').length; // how many "duplicatable" input fields we currently have
         newNum=num+1;
+        console.log("newNum: " + newNum);
         $('#eye' + num).remove(); // remove the last element
         $('#ecAdd').attr('disabled', false); // enable the "add" button
         newNum--;
@@ -352,6 +449,7 @@ $('#ecDel').click(function () {
             $('#ecDel').attr('disabled', false);
         }
     });
+
 $('#hairAdd').click(function () {
         var num = $('.clonedHairInput').length; // how many "duplicatable" input fields we currently have
         newNum = num + 1; // the numeric ID of the new input field being added
@@ -437,6 +535,7 @@ $('#sexDel').click(function () {
             $('#sexDel').attr('disabled', false);
         }
     });
+
 $('#fixAdd').click(function () {
         var num = $('.clonedFixInput').length; // how many "duplicatable" input fields we currently have
         newNum = num + 1; // the numeric ID of the new input field being added
@@ -475,6 +574,7 @@ $('#fixDel').click(function () {
             $('#fixDel').attr('disabled', false);
         }
     });
+
 $('#ageAdd').click(function () {
         var num = $('.clonedAgeInput').length; // how many "duplicatable" input fields we currently have
         newNum = num + 1; // the numeric ID of the new input field being added
@@ -554,4 +654,3 @@ $('#markDel').click(function () {
         }
     });
 
-});

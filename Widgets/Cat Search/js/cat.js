@@ -234,7 +234,7 @@ function Cat(){
 
 	this.displayClickedCat = function(aCat){
 		var html = "<div id='" + aCat.name + "Display' class='catDisplay'><img src='" + aCat.img + "'></img></div><div id='catAttributes' Name: "+aCat.name+" <br/>Breed: " +aCat.breed+"<br/>Color: "+aCat.color+"<br/>Sex: "+aCat.sex+"<br/>Fixed: "+aCat.fixed+"<br/>Eyecolor: "+aCat.eyecolor+"<br/>Age:"+aCat.age+"<br/>Hairlength: " + aCat.hairlength+"</div>";
-		$("rightTop").html(html);
+		$("rightTopTop").html(html);
 		return html;
 	}
 
