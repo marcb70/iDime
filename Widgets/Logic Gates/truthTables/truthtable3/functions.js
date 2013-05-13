@@ -114,7 +114,6 @@ function setColor(object)
 	}
 	object.setFill(color);
 	addToArray(object);
-	layer.draw();
 	tableShapes.draw();
 }
 function addToArray(object){

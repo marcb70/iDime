@@ -4,6 +4,7 @@
     <!--references relevant style sheets-->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../bootstrap/css/bootstrap-responsive.css">
     <!--references needed javascript files and jQuery libraries.-->
     <script src="kinetic-v4.3.3.min.js"></script>
     <script src="functions.js"></script>
@@ -24,7 +25,7 @@
     <!--Button creates and calls modal-->
    <a class = "btn btn-large btn-success" href = "#containerMain" role="button" aria-labelledby= "header" data-toggle="modal">Try it out!</a>
   <!--Modal created from twitter bootstrap library. Fore more information and documentation visit http://twitter.github.io/bootstrap/javascript.html or main twitter bootstrap website.-->
-    <div id = "containerMain" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div id = "containerMain" class="modal hide fade active" tabindex="-1" role="dialog" aria-hidden="true">
       <!-- -->
       <div id="directions" class = "modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
@@ -32,7 +33,7 @@
         <h4>((P -> Q) -> R) # (~Q * S)</h4>
       </div>
       <!--The main modal body contains only the exercise.-->
-      <div id="container" class = "modal-body"></div>
+      <div id="container" class = "modal-body active"></div>
 
       <div id = "buttonDiv" class="modal-footer">
          <!--This button allows the user to close the modal and return to reading the material. Work will not be saved.-->
