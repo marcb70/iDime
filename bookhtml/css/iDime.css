@@ -1,0 +1,94 @@
+.modal{
+	overflow: scroll;
+}
+
+.csumbBlueText
+{
+	color: #021D54;
+}
+
+.csumbGreenText
+{
+	color: #007751;
+}
+
+.csumbSandText
+{
+	color: #8F864F;
+}
+
+.csumbBlueBg
+{
+	background-color: #021D54;
+}
+
+.csumbGreenBg
+{
+	background-color: #007751;
+}
+
+.csumbSandBg
+{
+	background-repeat: no-repeat;
+	background-image: linear-gradient(bottom, rgb(236,234,221) 11%, rgb(143,134,79) 87%);
+	background-image: -o-linear-gradient(bottom, rgb(236,234,221) 11%, rgb(143,134,79) 87%);
+	background-image: -moz-linear-gradient(bottom, rgb(236,234,221) 11%, rgb(143,134,79) 87%);
+	background-image: -webkit-linear-gradient(bottom, rgb(236,234,221) 11%, rgb(143,134,79) 87%);
+	background-image: -ms-linear-gradient(bottom, rgb(236,234,221) 11%, rgb(143,134,79) 87%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.11, rgb(236,234,221)),
+		color-stop(0.87, rgb(143,134,79))
+	)
+}
+.whiteText
+{
+	color: #fff;
+}
+
+.tabs
+{
+	margin:0px;
+}
+
+p, h3 { 
+	margin-bottom:15px;
+}
+
+.aTab {
+	padding:10px;
+	width:80%;
+	background:#007751;
+	color:#fff;
+}
+
+.tabs li {
+	list-style:none;
+	display:inline;
+}
+
+.tabs a {
+	margin: 0px, auto;
+	padding:5px 10px;
+	display:inline-block;
+	background:#007751;
+	color:#8F864F;
+	text-decoration:none;
+}
+
+.tabs a.active {
+	background:#021D54;
+	color:#007751;
+}
+#tabContainer
+{
+	width: 80%;
+	padding: 10px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
